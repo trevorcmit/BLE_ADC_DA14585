@@ -93,3 +93,5 @@
 .\out_da14585\objects\user_peripheral.o: .\..\..\..\..\..\sdk\platform\arch\compiler\compiler.h
 .\out_da14585\objects\user_peripheral.o: .\..\..\..\..\..\sdk\ble_stack\host\att\attm\attm_db_128.h
 .\out_da14585\objects\user_peripheral.o: .\..\src\custom_profile\user_custs1_def.h
+.\out_da14585\objects\user_peripheral.o: .\..\..\..\..\..\sdk\platform\core_modules\arch_console\arch_console.h
+.\out_da14585\objects\user_peripheral.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h

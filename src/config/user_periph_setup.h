@@ -1,24 +1,12 @@
 /**
- ****************************************************************************************
- *
- * @file user_periph_setup.h
- *
- * @brief Peripherals setup header file.
- *
- * Copyright (C) 2015-2019 Dialog Semiconductor.
- * This computer program includes Confidential, Proprietary Information
- * of Dialog Semiconductor. All Rights Reserved.
- *
- ****************************************************************************************
- */
-
+****************************************************************************************
+* @file user_periph_setup.h
+* @brief Peripherals setup header file.
+****************************************************************************************
+*/
 #ifndef _USER_PERIPH_SETUP_H_
 #define _USER_PERIPH_SETUP_H_
 
-/*
- * INCLUDE FILES
- ****************************************************************************************
- */
 
 #include "gpio.h"
 #include "uart.h"
@@ -28,11 +16,10 @@
 #include "i2c_eeprom.h"
 
 
-
 /*
- * DEFINES
- ****************************************************************************************
- */
+* DEFINES
+****************************************************************************************
+*/
 
 /****************************************************************************************/
 /* UART2 configuration                                                                  */
@@ -43,7 +30,10 @@
     #define UART2_TX_PIN            GPIO_PIN_6
 #else
     #define UART2_TX_PORT           GPIO_PORT_0
-    #define UART2_TX_PIN            GPIO_PIN_4
+
+    // Initial Project Configuration changes Pin 4 (Default) to Pin 5
+    // #define UART2_TX_PIN            GPIO_PIN_4
+    #define UART2_TX_PIN            GPIO_PIN_5
 #endif
 
 // Define UART2 Settings
@@ -75,28 +65,35 @@
 #if defined (__DA14531__)
     #define SPI_EN_PORT             GPIO_PORT_0
     #define SPI_EN_PIN              GPIO_PIN_1
-
     #define SPI_CLK_PORT            GPIO_PORT_0
     #define SPI_CLK_PIN             GPIO_PIN_4
-
     #define SPI_DO_PORT             GPIO_PORT_0
     #define SPI_DO_PIN              GPIO_PIN_0
-
     #define SPI_DI_PORT             GPIO_PORT_0
     #define SPI_DI_PIN              GPIO_PIN_3
 
-#elif !defined (__DA14586__)
+#elif !defined (__DA14586__) // DA14585 Section
+    
+    // Existing SPI Assignments
+    // #define SPI_EN_PORT             GPIO_PORT_0
+    // #define SPI_EN_PIN              GPIO_PIN_3
+    // #define SPI_CLK_PORT            GPIO_PORT_0
+    // #define SPI_CLK_PIN             GPIO_PIN_0
+    // #define SPI_DO_PORT             GPIO_PORT_0
+    // #define SPI_DO_PIN              GPIO_PIN_6
+    // #define SPI_DI_PORT             GPIO_PORT_0
+    // #define SPI_DI_PIN              GPIO_PIN_5
+
+    // NEW SPI Assignments for Initial Project Configuration
+
     #define SPI_EN_PORT             GPIO_PORT_0
-    #define SPI_EN_PIN              GPIO_PIN_3
-
+    #define SPI_EN_PIN              GPIO_PIN_1
     #define SPI_CLK_PORT            GPIO_PORT_0
-    #define SPI_CLK_PIN             GPIO_PIN_0
-
+    #define SPI_CLK_PIN             GPIO_PIN_4
     #define SPI_DO_PORT             GPIO_PORT_0
-    #define SPI_DO_PIN              GPIO_PIN_6
-
+    #define SPI_DO_PIN              GPIO_PIN_0
     #define SPI_DI_PORT             GPIO_PORT_0
-    #define SPI_DI_PIN              GPIO_PIN_5
+    #define SPI_DI_PIN              GPIO_PIN_3
 #endif
 
 /***************************************************************************************/

@@ -8,11 +8,6 @@
 #ifndef _USER_CALLBACK_CONFIG_H_
 #define _USER_CALLBACK_CONFIG_H_
 
-/*
-* INCLUDE FILES
-****************************************************************************************
-*/
-
 #include <stdio.h>
 #include "app_callback.h"
 #include "app_default_handlers.h"
@@ -24,9 +19,9 @@
 #include "user_peripheral.h"
 
 /*
- * LOCAL VARIABLE DEFINITIONS
- ****************************************************************************************
- */
+* LOCAL VARIABLE DEFINITIONS
+****************************************************************************************
+*/
 
 static const struct app_callbacks user_app_callbacks = {
     .app_on_connection                  = user_app_connection,

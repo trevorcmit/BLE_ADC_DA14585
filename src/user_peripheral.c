@@ -1,30 +1,23 @@
 /**
- ****************************************************************************************
- *
- * @file user_peripheral.c
- *
- * @brief Peripheral project source code.
- *
- * Copyright (C) 2015-2019 Dialog Semiconductor.
- * This computer program includes Confidential, Proprietary Information
- * of Dialog Semiconductor. All Rights Reserved.
- *
- ****************************************************************************************
- */
+****************************************************************************************
+* @file user_peripheral.c
+* @brief Peripheral project source code.
+****************************************************************************************
+*/
 
 /**
- ****************************************************************************************
- * @addtogroup APP
- * @{
- ****************************************************************************************
- */
+****************************************************************************************
+* @addtogroup APP
+* @{
+****************************************************************************************
+*/
 
 /*
- * INCLUDE FILES
- ****************************************************************************************
- */
+* INCLUDE FILES
+****************************************************************************************
+*/
 
-#include "rwip_config.h"             // SW configuration
+#include "rwip_config.h" // SW configuration
 #include "gap.h"
 #include "app_easy_timer.h"
 #include "user_peripheral.h"
@@ -32,14 +25,16 @@
 #include "user_custs1_def.h"
 #include "co_bt.h"
 
+// Include for UART TX and GPIO, for Initial Project Configuration
+#include "arch_console.h"
+
 /*
- * TYPE DEFINITIONS
- ****************************************************************************************
- */
+* TYPE DEFINITIONS
+****************************************************************************************
+*/
 
 // Manufacturer Specific Data ADV structure type
-struct mnf_specific_data_ad_structure
-{
+struct mnf_specific_data_ad_structure {
     uint8_t ad_structure_size;
     uint8_t ad_structure_type;
     uint8_t company_id[APP_AD_MSD_COMPANY_ID_LEN];
@@ -47,10 +42,9 @@ struct mnf_specific_data_ad_structure
 };
 
 /*
- * GLOBAL VARIABLE DEFINITIONS
- ****************************************************************************************
- */
-
+* GLOBAL VARIABLE DEFINITIONS
+****************************************************************************************
+*/
 uint8_t app_connection_idx                      __SECTION_ZERO("retention_mem_area0");
 timer_hnd app_adv_data_update_timer_used        __SECTION_ZERO("retention_mem_area0");
 timer_hnd app_param_update_request_timer_used   __SECTION_ZERO("retention_mem_area0");
@@ -65,17 +59,25 @@ uint8_t stored_adv_data[ADV_DATA_LEN]           __SECTION_ZERO("retention_mem_ar
 uint8_t stored_scan_rsp_data[SCAN_RSP_DATA_LEN] __SECTION_ZERO("retention_mem_area0"); //@RETENTION MEMORY
 
 /*
- * FUNCTION DEFINITIONS
- ****************************************************************************************
+* FUNCTION DEFINITIONS
+****************************************************************************************
 */
+void user_on_init(void) {
+   // arch_printf("\n\r%s", __FUNCTION__);
+   default_app_on_init();
+}
+
+void user_on_set_dev_config_complete(void) {
+    // arch_printf("\n\r%s", __FUNCTION__);
+    default_app_on_set_dev_config_complete();
+}
 
 /**
  ****************************************************************************************
  * @brief Initialize Manufacturer Specific Data
  ****************************************************************************************
  */
-static void mnf_data_init()
-{
+static void mnf_data_init() {
     mnf_data.ad_structure_size = sizeof(struct mnf_specific_data_ad_structure ) - sizeof(uint8_t); // minus the size of the ad_structure_size field
     mnf_data.ad_structure_type = GAP_AD_TYPE_MANU_SPECIFIC_DATA;
     mnf_data.company_id[0] = APP_AD_MSD_COMPANY_ID & 0xFF; // LSB
@@ -89,8 +91,7 @@ static void mnf_data_init()
  * @brief Update Manufacturer Specific Data
  ****************************************************************************************
  */
-static void mnf_data_update()
-{
+static void mnf_data_update() {
     uint16_t data;
 
     data = mnf_data.proprietary_data[0] | (mnf_data.proprietary_data[1] << 8);
@@ -116,12 +117,10 @@ static void mnf_data_update()
  *                              28 bytes (Document CCSv6 - Part 1.3 Flags).
  ****************************************************************************************
  */
-static void app_add_ad_struct(struct gapm_start_advertise_cmd *cmd, void *ad_struct_data, uint8_t ad_struct_len, uint8_t adv_connectable)
-{
+static void app_add_ad_struct(struct gapm_start_advertise_cmd *cmd, void *ad_struct_data, uint8_t ad_struct_len, uint8_t adv_connectable) {
     uint8_t adv_data_max_size = (adv_connectable) ? (ADV_DATA_LEN - 3) : (ADV_DATA_LEN);
 
-    if ((adv_data_max_size - cmd->info.host.adv_data_len) >= ad_struct_len)
-    {
+    if ((adv_data_max_size - cmd->info.host.adv_data_len) >= ad_struct_len) {
         // Append manufacturer data to advertising data
         memcpy(&cmd->info.host.adv_data[cmd->info.host.adv_data_len], ad_struct_data, ad_struct_len);
 
@@ -131,8 +130,7 @@ static void app_add_ad_struct(struct gapm_start_advertise_cmd *cmd, void *ad_str
         // Store index of manufacturer data which are included in the advertising data
         mnf_data_index = cmd->info.host.adv_data_len - sizeof(struct mnf_specific_data_ad_structure);
     }
-    else if ((SCAN_RSP_DATA_LEN - cmd->info.host.scan_rsp_data_len) >= ad_struct_len)
-    {
+    else if ((SCAN_RSP_DATA_LEN - cmd->info.host.scan_rsp_data_len) >= ad_struct_len) {
         // Append manufacturer data to scan response data
         memcpy(&cmd->info.host.scan_rsp_data[cmd->info.host.scan_rsp_data_len], ad_struct_data, ad_struct_len);
 
@@ -144,8 +142,7 @@ static void app_add_ad_struct(struct gapm_start_advertise_cmd *cmd, void *ad_str
         // Mark that manufacturer data is in scan response and not advertising data
         mnf_data_index |= 0x80;
     }
-    else
-    {
+    else {
         // Manufacturer Specific Data do not fit in either Advertising Data or Scan Response Data
         ASSERT_WARNING(0);
     }
@@ -164,8 +161,7 @@ static void app_add_ad_struct(struct gapm_start_advertise_cmd *cmd, void *ad_str
  * @brief Advertisement data update timer callback function.
  ****************************************************************************************
 */
-static void adv_data_update_timer_cb()
-{
+static void adv_data_update_timer_cb() {
     // If mnd_data_index has MSB set, manufacturer data is stored in scan response
     uint8_t *mnf_data_storage = (mnf_data_index & 0x80) ? stored_scan_rsp_data : stored_adv_data;
 
@@ -187,18 +183,15 @@ static void adv_data_update_timer_cb()
  * @brief Parameter update request timer callback function.
  ****************************************************************************************
 */
-static void param_update_request_timer_cb()
-{
+static void param_update_request_timer_cb() {
     app_easy_gap_param_update_start(app_connection_idx);
     app_param_update_request_timer_used = EASY_TIMER_INVALID_TIMER;
 }
 
-void user_app_init(void)
-{
+void user_app_init(void) {
     app_param_update_request_timer_used = EASY_TIMER_INVALID_TIMER;
 
-    // Initialize Manufacturer Specific Data
-    mnf_data_init();
+    mnf_data_init(); // Initialize Manufacturer Specific Data
 
     // Initialize Advertising and Scan Response Data
     memcpy(stored_adv_data, USER_ADVERTISE_DATA, USER_ADVERTISE_DATA_LEN);

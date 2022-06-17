@@ -1,25 +1,17 @@
 /**
- ****************************************************************************************
- *
- * @file user_config.h
- *
- * @brief User configuration file.
- *
- * Copyright (C) 2015-2020 Dialog Semiconductor.
- * This computer program includes Confidential, Proprietary Information
- * of Dialog Semiconductor. All Rights Reserved.
- *
- ****************************************************************************************
- */
+****************************************************************************************
+* @file user_config.h
+* @brief User configuration file.
+****************************************************************************************
+*/
 
 #ifndef _USER_CONFIG_H_
 #define _USER_CONFIG_H_
 
 /*
- * INCLUDE FILES
- ****************************************************************************************
- */
-
+* INCLUDE FILES
+****************************************************************************************
+*/
 #include "app_user_config.h"
 #include "arch_api.h"
 #include "app_default_handlers.h"
@@ -27,17 +19,15 @@
 #include "co_bt.h"
 
 /*
- * DEFINES
- ****************************************************************************************
- */
+* DEFINES
+****************************************************************************************
+*/
 
 /*
- ****************************************************************************************
- *
- * Privacy / Addressing configuration
- *
- ****************************************************************************************
- */
+****************************************************************************************
+* Privacy / Addressing configuration
+****************************************************************************************
+*/
 
 /*************************************************************************
  * Privacy Capabilities and address configuration of local device:
@@ -47,7 +37,6 @@
  * - APP_CFG_HOST_PRIV_NRPA         Host Privacy, NRPA (non-connectable ONLY)
  * - APP_CFG_CNTL_PRIV_RPA_PUB      Controller Privacy, RPA or PUB, Public Identity
  * - APP_CFG_CNTL_PRIV_RPA_RAND     Controller Privacy, RPA, Public Identity
- *
  * Select only one option for privacy / addressing configuration.
  **************************************************************************
  */
@@ -57,27 +46,25 @@
  * Controller Privacy Mode:
  * - APP_CFG_CNTL_PRIV_MODE_NETWORK Controler Privacy Network mode (default)
  * - APP_CFG_CNTL_PRIV_MODE_DEVICE  Controler Privacy Device mode
- *
  * Select only one option for controller privacy mode configuration.
  **************************************************************************
  */
 #define USER_CFG_CNTL_PRIV_MODE     APP_CFG_CNTL_PRIV_MODE_NETWORK
 
 /*
- * VARIABLES
- ****************************************************************************************
- */
+* VARIABLES
+****************************************************************************************
+*/
 
 /******************************************
  * Default sleep mode. Possible values are:
- *
- * - ARCH_SLEEP_OFF
- * - ARCH_EXT_SLEEP_ON
- * - ARCH_EXT_SLEEP_OTP_COPY_ON
- *
- ******************************************
- */
-static const sleep_state_t app_default_sleep_mode = ARCH_SLEEP_OFF;
+* - ARCH_SLEEP_OFF
+* - ARCH_EXT_SLEEP_ON
+* - ARCH_EXT_SLEEP_OTP_COPY_ON
+******************************************
+*/
+// static const sleep_state_t app_default_sleep_mode = ARCH_SLEEP_OFF;
+static const sleep_state_t app_default_sleep_mode = ARCH_EXT_SLEEP_ON;
 
 /*
  ****************************************************************************************
@@ -135,30 +122,26 @@ static const struct advertise_configuration user_adv_conf = {
 };
 
 /*
- ****************************************************************************************
- *
- * Advertising or scan response data for the following cases:
- *
- * - ADV_IND: Connectable undirected advertising event.
- *    - The maximum length of the user defined advertising data shall be 28 bytes.
- *    - The Flags data type are written by the related ROM function, hence the user shall
- *      not include them in the advertising data. The related ROM function adds 3 bytes in
- *      the start of the advertising data that are to be transmitted over the air.
- *    - The maximum length of the user defined response data shall be 31 bytes.
- *
- * - ADV_NONCONN_IND: Non-connectable undirected advertising event.
- *    - The maximum length of the user defined advertising data shall be 31 bytes.
- *    - The Flags data type may be omitted, hence the user can use all the 31 bytes for
- *      data.
- *    - The scan response data shall be empty.
- *
- * - ADV_SCAN_IND: Scannable undirected advertising event.
- *    - The maximum length of the user defined advertising data shall be 31 bytes.
- *    - The Flags data type may be omitted, hence the user can use all the 31 bytes for
- *      data.
- *    - The maximum length of the user defined response data shall be 31 bytes.
- ****************************************************************************************
- */
+****************************************************************************************
+* Advertising or scan response data for the following cases:
+* - ADV_IND: Connectable undirected advertising event.
+*    - The maximum length of the user defined advertising data shall be 28 bytes.
+*    - The Flags data type are written by the related ROM function, hence the user shall
+*      not include them in the advertising data. The related ROM function adds 3 bytes in
+*      the start of the advertising data that are to be transmitted over the air.
+*    - The maximum length of the user defined response data shall be 31 bytes.
+* - ADV_NONCONN_IND: Non-connectable undirected advertising event.
+*    - The maximum length of the user defined advertising data shall be 31 bytes.
+*    - The Flags data type may be omitted, hence the user can use all the 31 bytes for
+*      data.
+*    - The scan response data shall be empty.
+* - ADV_SCAN_IND: Scannable undirected advertising event.
+*    - The maximum length of the user defined advertising data shall be 31 bytes.
+*    - The Flags data type may be omitted, hence the user can use all the 31 bytes for
+*      data.
+*    - The maximum length of the user defined response data shall be 31 bytes.
+****************************************************************************************
+*/
 /// Advertising data
 #define USER_ADVERTISE_DATA         ("\x03"\
                                     ADV_TYPE_COMPLETE_LIST_16BIT_SERVICE_IDS\
@@ -178,14 +161,11 @@ static const struct advertise_configuration user_adv_conf = {
 
 /*
  ****************************************************************************************
- *
  * Device name.
- *
  * - If there is space left in the advertising or scan response data the device name is
  *   copied there. The device name can be anytime read by a connected peer, if the
  *   application supports it.
  * - The Bluetooth device name can be up to 248 bytes.
- *
  ****************************************************************************************
  */
 /// Device name
@@ -195,12 +175,10 @@ static const struct advertise_configuration user_adv_conf = {
 #define USER_DEVICE_NAME_LEN    (sizeof(USER_DEVICE_NAME)-1)
 
 /*
- ****************************************************************************************
- *
- * GAPM configuration
- *
- ****************************************************************************************
- */
+****************************************************************************************
+* GAPM configuration
+****************************************************************************************
+*/
 static const struct gapm_configuration user_gapm_conf = {
     /// Device Role: Central, Peripheral, Observer, Broadcaster or All roles. (@see enum gap_role)
     .role = GAP_ROLE_PERIPHERAL,

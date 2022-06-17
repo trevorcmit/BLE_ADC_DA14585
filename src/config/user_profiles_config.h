@@ -1,17 +1,9 @@
 /**
- ****************************************************************************************
- *
- * @file user_profiles_config.h
- *
- * @brief Configuration file for the profiles used in the application.
- *
- * Copyright (C) 2017-2019 Dialog Semiconductor.
- * This computer program includes Confidential, Proprietary Information
- * of Dialog Semiconductor. All Rights Reserved.
- *
- ****************************************************************************************
- */
-
+****************************************************************************************
+* @file user_profiles_config.h
+* @brief Configuration file for the profiles used in the application.
+****************************************************************************************
+*/
 #ifndef _USER_PROFILES_CONFIG_H_
 #define _USER_PROFILES_CONFIG_H_
 
@@ -20,17 +12,15 @@
  * @defgroup APP_CONFIG
  * @ingroup APP
  * @brief  Application configuration file
- *
  * This file contains the configuration of the profiles used by the application.
- *
  * @{
  ****************************************************************************************
  */
 
 /*
- * DEFINITIONS
- ****************************************************************************************
- */
+* DEFINITIONS
+****************************************************************************************
+*/
 
 /***************************************************************************************/
 /* Used BLE profiles (used by "rwprf_config.h").                                       */
@@ -115,10 +105,10 @@
 #define APP_DIS_PNP_ID_LEN              (7)
 
 /*
- ****************************************************************************************
- * CUST1 application profile configuration
- ****************************************************************************************
- */
+****************************************************************************************
+* CUST1 application profile configuration
+****************************************************************************************
+*/
 
 /// @} APP_CONFIG
 

@@ -85,3 +85,8 @@
 .\out_da14585\objects\arch_console.o: .\..\..\..\..\..\sdk\ble_stack\profiles\prf_types.h
 .\out_da14585\objects\arch_console.o: .\..\..\..\..\..\sdk\ble_stack\profiles\prf.h
 .\out_da14585\objects\arch_console.o: .\..\..\..\..\..\sdk\app_modules\api\app_adv_data.h
+.\out_da14585\objects\arch_console.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+.\out_da14585\objects\arch_console.o: ..\..\..\..\..\sdk\platform\core_modules\arch_console\arch_console.h
+.\out_da14585\objects\arch_console.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
+.\out_da14585\objects\arch_console.o: .\..\..\..\..\..\sdk\platform\driver\uart\uart.h
+.\out_da14585\objects\arch_console.o: .\..\..\..\..\..\sdk\platform\driver\dma\dma.h

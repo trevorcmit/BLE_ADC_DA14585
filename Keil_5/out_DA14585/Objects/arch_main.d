@@ -129,6 +129,7 @@
 .\out_da14585\objects\arch_main.o: .\..\..\..\..\..\sdk\ble_stack\ea\api\ea.h
 .\out_da14585\objects\arch_main.o: .\..\..\..\..\..\sdk\ble_stack\controller\llc\llc_task.h
 .\out_da14585\objects\arch_main.o: .\..\..\..\..\..\sdk\platform\core_modules\arch_console\arch_console.h
+.\out_da14585\objects\arch_main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
 .\out_da14585\objects\arch_main.o: ..\..\..\..\..\sdk\platform\arch\main\arch_system.h
 .\out_da14585\objects\arch_main.o: .\..\..\..\..\..\sdk\platform\system_library\include\system_library.h
 .\out_da14585\objects\arch_main.o: .\..\src\config\user_callback_config.h

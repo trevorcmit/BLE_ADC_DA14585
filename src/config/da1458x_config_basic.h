@@ -1,16 +1,9 @@
 /**
- ****************************************************************************************
- *
- * @file da1458x_config_basic.h
- *
- * @brief Basic compile configuration file.
- *
- * Copyright (C) 2015-2019 Dialog Semiconductor.
- * This computer program includes Confidential, Proprietary Information
- * of Dialog Semiconductor. All Rights Reserved.
- *
- ****************************************************************************************
- */
+****************************************************************************************
+* @file da1458x_config_basic.h
+* @brief Basic compile configuration file.
+****************************************************************************************
+*/
 
 #ifndef _DA1458X_CONFIG_BASIC_H_
 #define _DA1458X_CONFIG_BASIC_H_
@@ -65,7 +58,8 @@
 /* If CFG_PRINTF_UART2 is defined, then serial interface logging mechanism is implented using UART2, else UART1 */
 /* will be used.                                                                                                */
 /****************************************************************************************************************/
-#undef CFG_PRINTF
+// #undef CFG_PRINTF
+#define CFG_PRINTF
 #ifdef CFG_PRINTF
     #define CFG_PRINTF_UART2
 #endif
