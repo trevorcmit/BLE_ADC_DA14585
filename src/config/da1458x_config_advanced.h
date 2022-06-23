@@ -1,17 +1,9 @@
 /**
- ****************************************************************************************
- *
- * @file da1458x_config_advanced.h
- *
- * @brief Advanced compile configuration file.
- *
- * Copyright (C) 2014-2020 Dialog Semiconductor.
- * This computer program includes Confidential, Proprietary Information
- * of Dialog Semiconductor. All Rights Reserved.
- *
- ****************************************************************************************
- */
-
+****************************************************************************************
+* @file da1458x_config_advanced.h
+* @brief Advanced compile configuration file.
+****************************************************************************************
+*/
 #ifndef _DA1458X_CONFIG_ADVANCED_H_
 #define _DA1458X_CONFIG_ADVANCED_H_
 

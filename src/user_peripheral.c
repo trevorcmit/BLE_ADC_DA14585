@@ -4,19 +4,12 @@
 * @brief Peripheral project source code.
 ****************************************************************************************
 */
-
 /**
 ****************************************************************************************
 * @addtogroup APP
 * @{
 ****************************************************************************************
 */
-
-/*
-* INCLUDE FILES
-****************************************************************************************
-*/
-
 #include "rwip_config.h" // SW configuration
 #include "gap.h"
 #include "app_easy_timer.h"
@@ -28,10 +21,10 @@
 // Include for UART TX and GPIO, for Initial Project Configuration
 #include "arch_console.h"
 
-/*
-* TYPE DEFINITIONS
-****************************************************************************************
-*/
+// Include for General Purpose ADC
+#include "adc.h"
+#include "adc_58x.h"
+
 
 // Manufacturer Specific Data ADV structure type
 struct mnf_specific_data_ad_structure {
@@ -49,6 +42,10 @@ uint8_t app_connection_idx                      __SECTION_ZERO("retention_mem_ar
 timer_hnd app_adv_data_update_timer_used        __SECTION_ZERO("retention_mem_area0");
 timer_hnd app_param_update_request_timer_used   __SECTION_ZERO("retention_mem_area0");
 
+// Addition for timing of ADC Readings
+ke_msg_id_t timer_used                           __SECTION_ZERO("retention_mem_area0"); //@RETENTION MEMORY
+
+
 // Retained variables
 struct mnf_specific_data_ad_structure mnf_data  __SECTION_ZERO("retention_mem_area0"); //@RETENTION MEMORY
 // Index of manufacturer data in advertising data or scan response data (when MSB is 1)
@@ -62,15 +59,52 @@ uint8_t stored_scan_rsp_data[SCAN_RSP_DATA_LEN] __SECTION_ZERO("retention_mem_ar
 * FUNCTION DEFINITIONS
 ****************************************************************************************
 */
+static uint16_t gpadc_read(void);
+// static uint16_t gpadc_sample_to_mv(uint16_t sample);
+// static timer_hnd timer_id __attribute__((section("retention_mem_area0"),zero_init));
+
+
 void user_on_init(void) {
-   // arch_printf("\n\r%s", __FUNCTION__);
    default_app_on_init();
 }
 
+
 void user_on_set_dev_config_complete(void) {
-    // arch_printf("\n\r%s", __FUNCTION__);
     default_app_on_set_dev_config_complete();
 }
+
+
+static uint16_t gpadc_read(void) { // SINGLE ENDED MONITORING
+    /* Initialize the ADC */
+    adc_config_t adc_cfg = {
+        .mode = ADC_INPUT_MODE_SINGLE_ENDED,
+        .input = ADC_INPUT_SE_P0_1, // Can use P0_0 to P0_3
+        .attn = true,
+        .sign = false
+    };
+    adc_init(&adc_cfg);
+
+    /* Perform offset calibration of the ADC */
+    adc_offset_calibrate(ADC_INPUT_MODE_SINGLE_ENDED);
+
+    // adc_start();
+    adc_enable();
+    // uint16_t result = adc_correct_sample(adc_get_sample());
+    uint16_t result = adc_get_sample();
+    adc_disable();
+
+    return (result);
+}
+
+// static uint16_t gpadc_sample_to_mv(uint16_t sample) {
+    /* Resolution of ADC sample depends on oversampling rate */
+    // uint32_t adc_res = 10 + ((6 < adc_get_oversampling()) ? 6 : adc_get_oversampling());
+
+    /* Reference voltage is 900mv but scale based in input attenation */
+    // uint32_t ref_mv = 900 * (GetBits16(GP_ADC_CTRL2_REG, GP_ADC_ATTN) + 1);
+
+    // return (uint16_t)((((uint32_t)sample) * ref_mv) >> adc_res);
+// }
 
 /**
  ****************************************************************************************
@@ -93,7 +127,6 @@ static void mnf_data_init() {
  */
 static void mnf_data_update() {
     uint16_t data;
-
     data = mnf_data.proprietary_data[0] | (mnf_data.proprietary_data[1] << 8);
     data += 1;
     mnf_data.proprietary_data[0] = data & 0xFF;
@@ -188,127 +221,119 @@ static void param_update_request_timer_cb() {
     app_param_update_request_timer_used = EASY_TIMER_INVALID_TIMER;
 }
 
+void app_adcval1_timer_cb_handler() {
+    struct custs1_val_ntf_ind_req *req = KE_MSG_ALLOC_DYN(CUSTS1_VAL_NTF_REQ,
+                                                          prf_get_task_from_id(TASK_ID_CUSTS1),
+                                                          TASK_APP,
+                                                          custs1_val_ntf_ind_req,
+                                                          DEF_SVC1_ADC_VAL_1_CHAR_LEN);
+    uint16_t out[100];
+    for (int i = 0; i < 100; i++) {
+        // uint16_t output = gpadc_sample_to_mv(gpadc_read()); // Get uint16_t ADC reading
+        uint16_t output = gpadc_read();
+        out[i] = output;
+    }
+
+    req->handle = SVC1_IDX_ADC_VAL_1_VAL;                   // Location to send it to
+    req->length = DEF_SVC1_ADC_VAL_1_CHAR_LEN;
+    req->notification = true;
+    memcpy(req->value, &out, DEF_SVC1_ADC_VAL_1_CHAR_LEN);
+    ke_msg_send(req);
+
+    if (ke_state_get(TASK_APP) == APP_CONNECTED) {timer_used = app_easy_timer(100, app_adcval1_timer_cb_handler);};
+}
+
+
 void user_app_init(void) {
     app_param_update_request_timer_used = EASY_TIMER_INVALID_TIMER;
-
-    mnf_data_init(); // Initialize Manufacturer Specific Data
-
-    // Initialize Advertising and Scan Response Data
-    memcpy(stored_adv_data, USER_ADVERTISE_DATA, USER_ADVERTISE_DATA_LEN);
+    mnf_data_init();                                                       // Initialize Manufacturer Specific Data
+    memcpy(stored_adv_data, USER_ADVERTISE_DATA, USER_ADVERTISE_DATA_LEN); // Init. Advertising and Scan Response Data
     stored_adv_data_len = USER_ADVERTISE_DATA_LEN;
     memcpy(stored_scan_rsp_data, USER_ADVERTISE_SCAN_RESPONSE_DATA, USER_ADVERTISE_SCAN_RESPONSE_DATA_LEN);
     stored_scan_rsp_data_len = USER_ADVERTISE_SCAN_RESPONSE_DATA_LEN;
-
     default_app_on_init();
 }
 
-void user_app_adv_start(void)
-{
-    // Schedule the next advertising data update
-    app_adv_data_update_timer_used = app_easy_timer(APP_ADV_DATA_UPDATE_TO, adv_data_update_timer_cb);
 
+void user_app_adv_start(void) {
+    app_adv_data_update_timer_used = app_easy_timer(APP_ADV_DATA_UPDATE_TO, adv_data_update_timer_cb);
     struct gapm_start_advertise_cmd* cmd;
     cmd = app_easy_gap_undirected_advertise_get_active();
-
-    // Add manufacturer data to initial advertising or scan response data, if there is enough space
     app_add_ad_struct(cmd, &mnf_data, sizeof(struct mnf_specific_data_ad_structure), 1);
-
     app_easy_gap_undirected_advertise_start();
 }
 
-void user_app_connection(uint8_t connection_idx, struct gapc_connection_req_ind const *param)
-{
-    if (app_env[connection_idx].conidx != GAP_INVALID_CONIDX)
-    {
+
+void user_app_connection(uint8_t connection_idx, struct gapc_connection_req_ind const *param) {
+    if (app_env[connection_idx].conidx != GAP_INVALID_CONIDX) {
         app_connection_idx = connection_idx;
-
-        // Stop the advertising data update timer
-        app_easy_timer_cancel(app_adv_data_update_timer_used);
-
-        // Check if the parameters of the established connection are the preferred ones.
-        // If not then schedule a connection parameter update request.
-        if ((param->con_interval < user_connection_param_conf.intv_min) ||
-            (param->con_interval > user_connection_param_conf.intv_max) ||
-            (param->con_latency != user_connection_param_conf.latency) ||
-            (param->sup_to != user_connection_param_conf.time_out))
-        {
-            // Connection params are not these that we expect
+        app_easy_timer_cancel(app_adv_data_update_timer_used);             // Stop advertising data update timer
+        if ((param->con_interval < user_connection_param_conf.intv_min) || // Check if parameters are preferred ones.
+            (param->con_interval > user_connection_param_conf.intv_max) || // If not, schedule connect. param. update req.
+            (param->con_latency != user_connection_param_conf.latency)  ||
+            (param->sup_to != user_connection_param_conf.time_out)) {
             app_param_update_request_timer_used = app_easy_timer(APP_PARAM_UPDATE_REQUEST_TO, param_update_request_timer_cb);
         }
     }
-    else
-    {
-        // No connection has been established, restart advertising
+    else {
         user_app_adv_start();
-    }
+    } // No connection has been established, restart advertising
 
-    default_app_on_connection(connection_idx, param);
+    default_app_on_connection(connection_idx, param);             // Default app callback on connection
+    timer_used = app_easy_timer(100, app_adcval1_timer_cb_handler); // Begin collection of ADC readings
 }
 
-void user_app_adv_undirect_complete(uint8_t status)
-{
+
+void user_app_adv_undirect_complete(uint8_t status) {
     // If advertising was canceled then update advertising data and start advertising again
-    if (status == GAP_ERR_CANCELED)
-    {
+    if (status == GAP_ERR_CANCELED) {
         user_app_adv_start();
     }
 }
 
-void user_app_disconnect(struct gapc_disconnect_ind const *param)
-{
-    // Cancel the parameter update request timer
-    if (app_param_update_request_timer_used != EASY_TIMER_INVALID_TIMER)
-    {
+
+void user_app_disconnect(struct gapc_disconnect_ind const *param) {
+    if (app_param_update_request_timer_used != EASY_TIMER_INVALID_TIMER) { // Cancel the parameter update request timer
         app_easy_timer_cancel(app_param_update_request_timer_used);
         app_param_update_request_timer_used = EASY_TIMER_INVALID_TIMER;
     }
-    // Update manufacturer data for the next advertsing event
-    mnf_data_update();
-    // Restart Advertising
-    user_app_adv_start();
+    mnf_data_update();       // Update manufacturer data for the next advertsing event
+    user_app_adv_start();    // Restart Advertising
 }
+
+
 
 void user_catch_rest_hndl(ke_msg_id_t const msgid,
                           void const *param,
                           ke_task_id_t const dest_id,
-                          ke_task_id_t const src_id)
-{
-    switch(msgid)
-    {
+                          ke_task_id_t const src_id) {
+    switch(msgid) {
         case CUSTS1_VAL_WRITE_IND:
         {
             struct custs1_val_write_ind const *msg_param = (struct custs1_val_write_ind const *)(param);
 
-            switch (msg_param->handle)
-            {
+            switch (msg_param->handle) {
                 case SVC1_IDX_CONTROL_POINT_VAL:
                     user_svc1_ctrl_wr_ind_handler(msgid, msg_param, dest_id, src_id);
                     break;
-
                 case SVC1_IDX_LED_STATE_VAL:
                     user_svc1_led_wr_ind_handler(msgid, msg_param, dest_id, src_id);
                     break;
-
                 case SVC1_IDX_ADC_VAL_1_NTF_CFG:
                     user_svc1_adc_val_1_cfg_ind_handler(msgid, msg_param, dest_id, src_id);
                     break;
-
                 case SVC1_IDX_BUTTON_STATE_NTF_CFG:
                     user_svc1_button_cfg_ind_handler(msgid, msg_param, dest_id, src_id);
                     break;
-
                 case SVC1_IDX_INDICATEABLE_IND_CFG:
                     user_svc1_long_val_cfg_ind_handler(msgid, msg_param, dest_id, src_id);
                     break;
-
                 case SVC1_IDX_LONG_VALUE_NTF_CFG:
                     user_svc1_long_val_cfg_ind_handler(msgid, msg_param, dest_id, src_id);
                     break;
-
                 case SVC1_IDX_LONG_VALUE_VAL:
                     user_svc1_long_val_wr_ind_handler(msgid, msg_param, dest_id, src_id);
                     break;
-
                 default:
                     break;
             }
@@ -317,55 +342,42 @@ void user_catch_rest_hndl(ke_msg_id_t const msgid,
         case CUSTS1_VAL_NTF_CFM:
         {
             struct custs1_val_ntf_cfm const *msg_param = (struct custs1_val_ntf_cfm const *)(param);
-
-            switch (msg_param->handle)
-            {
+            switch (msg_param->handle) {
                 case SVC1_IDX_ADC_VAL_1_VAL:
                     break;
-
                 case SVC1_IDX_BUTTON_STATE_VAL:
                     break;
-
                 case SVC1_IDX_LONG_VALUE_VAL:
                     break;
-
                 default:
                     break;
             }
         } break;
 
-        case CUSTS1_VAL_IND_CFM:
-        {
+        case CUSTS1_VAL_IND_CFM: {
             struct custs1_val_ind_cfm const *msg_param = (struct custs1_val_ind_cfm const *)(param);
 
-            switch (msg_param->handle)
-            {
+            switch (msg_param->handle) {
                 case SVC1_IDX_INDICATEABLE_VAL:
                     break;
-
                 default:
                     break;
-             }
+            }
         } break;
 
-        case CUSTS1_ATT_INFO_REQ:
-        {
+        case CUSTS1_ATT_INFO_REQ: {
             struct custs1_att_info_req const *msg_param = (struct custs1_att_info_req const *)param;
-
-            switch (msg_param->att_idx)
-            {
+            switch (msg_param->att_idx) {
                 case SVC1_IDX_LONG_VALUE_VAL:
                     user_svc1_long_val_att_info_req_handler(msgid, msg_param, dest_id, src_id);
                     break;
-
                 default:
                     user_svc1_rest_att_info_req_handler(msgid, msg_param, dest_id, src_id);
                     break;
-             }
+            }
         } break;
 
-        case GAPC_PARAM_UPDATED_IND:
-        {
+        case GAPC_PARAM_UPDATED_IND: {
             // Cast the "param" pointer to the appropriate message structure
             struct gapc_param_updated_ind const *msg_param = (struct gapc_param_updated_ind const *)(param);
 
@@ -373,22 +385,16 @@ void user_catch_rest_hndl(ke_msg_id_t const msgid,
             if ((msg_param->con_interval >= user_connection_param_conf.intv_min) &&
                 (msg_param->con_interval <= user_connection_param_conf.intv_max) &&
                 (msg_param->con_latency == user_connection_param_conf.latency) &&
-                (msg_param->sup_to == user_connection_param_conf.time_out))
-            {
-            }
+                (msg_param->sup_to == user_connection_param_conf.time_out)) {}
         } break;
 
-        case CUSTS1_VALUE_REQ_IND:
-        {
+        case CUSTS1_VALUE_REQ_IND: {
             struct custs1_value_req_ind const *msg_param = (struct custs1_value_req_ind const *) param;
 
-            switch (msg_param->att_idx)
-            {
+            switch (msg_param->att_idx) {
                 case SVC3_IDX_READ_4_VAL:
-                {
-                    user_svc3_read_non_db_val_handler(msgid, msg_param, dest_id, src_id);
-                } break;
-
+                    {user_svc3_read_non_db_val_handler(msgid, msg_param, dest_id, src_id);}
+                    break;
                 default:
                 {
                     // Send Error message
@@ -396,21 +402,14 @@ void user_catch_rest_hndl(ke_msg_id_t const msgid,
                                                                     src_id,
                                                                     dest_id,
                                                                     custs1_value_req_rsp);
-
-                    // Provide the connection index.
                     rsp->conidx  = app_env[msg_param->conidx].conidx;
-                    // Provide the attribute index.
                     rsp->att_idx = msg_param->att_idx;
-                    // Force current length to zero.
                     rsp->length = 0;
-                    // Set Error status
                     rsp->status  = ATT_ERR_APP_ERROR;
-                    // Send message
                     ke_msg_send(rsp);
                 } break;
              }
         } break;
-
         default:
             break;
     }

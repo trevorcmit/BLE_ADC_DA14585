@@ -114,8 +114,7 @@ static const struct default_app_operations user_default_app_operations = {
 // for SIG profiles that do not have this function already implemented in the SDK
 // or if you want to override the functionality. Check the prf_func array in the SDK
 // for your reference of which profiles are supported.
-static const struct prf_func_callbacks user_prf_funcs[] =
-{
+static const struct prf_func_callbacks user_prf_funcs[] = {
     {TASK_ID_INVALID,    NULL, NULL}   // DO NOT MOVE. Must always be last
 };
 

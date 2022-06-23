@@ -1,17 +1,9 @@
 /**
- ****************************************************************************************
- *
- * @file user_peripheral_proj.h
- *
- * @brief Peripheral project header file.
- *
- * Copyright (C) 2015-2019 Dialog Semiconductor.
- * This computer program includes Confidential, Proprietary Information
- * of Dialog Semiconductor. All Rights Reserved.
- *
- ****************************************************************************************
- */
-
+****************************************************************************************
+* @file user_peripheral_proj.h
+* @brief Peripheral project header file.
+****************************************************************************************
+*/
 #ifndef _USER_PERIPHERAL_H_
 #define _USER_PERIPHERAL_H_
 
@@ -19,18 +11,10 @@
  ****************************************************************************************
  * @addtogroup APP
  * @ingroup RICOW
- *
  * @brief
- *
  * @{
  ****************************************************************************************
  */
-
-/*
- * INCLUDE FILES
- ****************************************************************************************
- */
-
 #include "rwble_config.h"
 #include "app_task.h"                  // application task
 #include "gapc_task.h"                 // gap functions and messages

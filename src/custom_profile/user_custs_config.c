@@ -1,40 +1,21 @@
 /**
- ****************************************************************************************
- *
- * @file user_custs_config.c
- *
- * @brief Custom1/2 Server (CUSTS1/2) profile database structure and initialization.
- *
- * Copyright (C) 2016-2019 Dialog Semiconductor.
- * This computer program includes Confidential, Proprietary Information
- * of Dialog Semiconductor. All Rights Reserved.
- *
- ****************************************************************************************
- */
-
+****************************************************************************************
+* @file user_custs_config.c
+* @brief Custom1/2 Server (CUSTS1/2) profile database structure and initialization.
+****************************************************************************************
+*/
 /**
- ****************************************************************************************
- * @defgroup USER_CONFIG
- * @ingroup USER
- * @brief Custom1/2 Server (CUSTS1/2) profile database structure and initialization.
- *
- * @{
- ****************************************************************************************
- */
-
-/*
- * INCLUDE FILES
- ****************************************************************************************
- */
-
+****************************************************************************************
+* @defgroup USER_CONFIG
+* @ingroup USER
+* @brief Custom1/2 Server (CUSTS1/2) profile database structure and initialization.
+*
+* @{
+****************************************************************************************
+*/
 #include "app_prf_types.h"
 #include "app_customs.h"
 #include "user_custs1_def.h"
-
-/*
- * GLOBAL VARIABLE DEFINITIONS
- ****************************************************************************************
- */
 
 #if (BLE_CUSTOM1_SERVER)
 extern const struct attm_desc_128 custs1_att_db[CUSTS1_IDX_NB];

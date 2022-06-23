@@ -1,42 +1,24 @@
 /**
- ****************************************************************************************
- *
- * @file user_custs1_def.h
- *
- * @brief Custom Server 1 (CUSTS1) profile database definitions.
- *
- * Copyright (C) 2016-2019 Dialog Semiconductor.
- * This computer program includes Confidential, Proprietary Information
- * of Dialog Semiconductor. All Rights Reserved.
- *
- ****************************************************************************************
- */
-
+****************************************************************************************
+* @file user_custs1_def.h
+* @brief Custom Server 1 (CUSTS1) profile database definitions.
+****************************************************************************************
+*/
 #ifndef _USER_CUSTS1_DEF_H_
 #define _USER_CUSTS1_DEF_H_
 
 /**
- ****************************************************************************************
- * @defgroup USER_CONFIG
- * @ingroup USER
- * @brief Custom Server 1 (CUSTS1) profile database definitions.
- *
- * @{
- ****************************************************************************************
- */
-
-/*
- * INCLUDE FILES
- ****************************************************************************************
- */
-
+****************************************************************************************
+* @defgroup USER_CONFIG
+* @ingroup USER
+* @brief Custom Server 1 (CUSTS1) profile database definitions.
+*
+* @{
+****************************************************************************************
+*/
 #include "attm_db_128.h"
 
-/*
- * DEFINES
- ****************************************************************************************
- */
-
+// DEFINITIONS
 // Service 1 of the custom server 1
 #define DEF_SVC1_UUID_128                {0x59, 0x5a, 0x08, 0xe4, 0x86, 0x2a, 0x9e, 0x8f, 0xe9, 0x11, 0xbc, 0x7c, 0x98, 0x43, 0x42, 0x18}
 

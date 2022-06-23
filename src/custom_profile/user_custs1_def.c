@@ -1,31 +1,18 @@
 /**
- ****************************************************************************************
- *
- * @file user_custs1_def.c
- *
- * @brief Custom Server 1 (CUSTS1) profile database definitions.
- *
- * Copyright (C) 2016-2019 Dialog Semiconductor.
- * This computer program includes Confidential, Proprietary Information
- * of Dialog Semiconductor. All Rights Reserved.
- *
- ****************************************************************************************
- */
-
+****************************************************************************************
+* @file user_custs1_def.c
+* @brief Custom Server 1 (CUSTS1) profile database definitions.
+****************************************************************************************
+*/
 /**
- ****************************************************************************************
- * @defgroup USER_CONFIG
- * @ingroup USER
- * @brief Custom server 1 (CUSTS1) profile database definitions.
- *
- * @{
- ****************************************************************************************
- */
-
-/*
- * INCLUDE FILES
- ****************************************************************************************
- */
+****************************************************************************************
+* @defgroup USER_CONFIG
+* @ingroup USER
+* @brief Custom server 1 (CUSTS1) profile database definitions.
+*
+* @{
+****************************************************************************************
+*/
 
 #include <stdint.h>
 #include "co_utils.h"
@@ -33,10 +20,6 @@
 #include "attm_db_128.h"
 #include "user_custs1_def.h"
 
-/*
- * LOCAL VARIABLE DEFINITIONS
- ****************************************************************************************
- */
 
 // Service 1 of the custom server 1
 static const att_svc_desc128_t custs1_svc1                      = DEF_SVC1_UUID_128;
@@ -79,8 +62,7 @@ const uint8_t custs1_services_size = ARRAY_LEN(custs1_services) - 1;
 const uint16_t custs1_att_max_nb = CUSTS1_IDX_NB;
 
 /// Full CUSTS1 Database Description - Used to add attributes into the database
-const struct attm_desc_128 custs1_att_db[CUSTS1_IDX_NB] =
-{
+const struct attm_desc_128 custs1_att_db[CUSTS1_IDX_NB] = {
     /*************************
      * Service 1 configuration
      *************************

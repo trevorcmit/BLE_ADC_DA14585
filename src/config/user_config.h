@@ -4,30 +4,15 @@
 * @brief User configuration file.
 ****************************************************************************************
 */
-
 #ifndef _USER_CONFIG_H_
 #define _USER_CONFIG_H_
 
-/*
-* INCLUDE FILES
-****************************************************************************************
-*/
 #include "app_user_config.h"
 #include "arch_api.h"
 #include "app_default_handlers.h"
 #include "app_adv_data.h"
 #include "co_bt.h"
 
-/*
-* DEFINES
-****************************************************************************************
-*/
-
-/*
-****************************************************************************************
-* Privacy / Addressing configuration
-****************************************************************************************
-*/
 
 /*************************************************************************
  * Privacy Capabilities and address configuration of local device:
@@ -55,7 +40,6 @@
 * VARIABLES
 ****************************************************************************************
 */
-
 /******************************************
  * Default sleep mode. Possible values are:
 * - ARCH_SLEEP_OFF
@@ -66,15 +50,8 @@
 // static const sleep_state_t app_default_sleep_mode = ARCH_SLEEP_OFF;
 static const sleep_state_t app_default_sleep_mode = ARCH_EXT_SLEEP_ON;
 
-/*
- ****************************************************************************************
- *
- * Advertising configuration
- *
- ****************************************************************************************
- */
+// Advertising Configuration
 static const struct advertise_configuration user_adv_conf = {
-
     .addr_src = APP_CFG_ADDR_SRC(USER_CFG_ADDRESS_MODE),
 
     /// Minimum interval for advertising
@@ -169,7 +146,7 @@ static const struct advertise_configuration user_adv_conf = {
  ****************************************************************************************
  */
 /// Device name
-#define USER_DEVICE_NAME        "DLG-PRPH"
+#define USER_DEVICE_NAME        "BLE-ADC-14585"
 
 /// Device name length
 #define USER_DEVICE_NAME_LEN    (sizeof(USER_DEVICE_NAME)-1)
@@ -192,11 +169,7 @@ static const struct gapm_configuration user_gapm_conf = {
     /// Duration before regenerating the Random Private Address when privacy is enabled
     .renew_dur = 15000,    // 15000 * 10ms = 150s is the minimum value
 
-    /***********************
-     * Privacy configuration
-     ***********************
-     */
-
+    // Privacy Configuration
     /// Random Static address
     // NOTE: The address shall comply with the following requirements:
     // - the two most significant bits of the address shall be equal to 1,
@@ -249,12 +222,10 @@ static const struct gapm_configuration user_gapm_conf = {
 };
 
 /*
- ****************************************************************************************
- *
- * Parameter update configuration
- *
- ****************************************************************************************
- */
+****************************************************************************************
+* Parameter update configuration
+****************************************************************************************
+*/
 static const struct connection_param_configuration user_connection_param_conf = {
     /// Connection interval minimum measured in ble double slots (1.25ms)
     /// use the macro MS_TO_DOUBLESLOTS to convert from milliseconds (ms) to double slots
@@ -281,12 +252,10 @@ static const struct connection_param_configuration user_connection_param_conf = 
 };
 
 /*
- ****************************************************************************************
- *
- * Default handlers configuration (applies only for @app_default_handlers.c)
- *
- ****************************************************************************************
- */
+****************************************************************************************
+* Default handlers configuration (applies only for @app_default_handlers.c)
+****************************************************************************************
+*/
 static const struct default_handlers_configuration  user_default_hnd_conf = {
     // Configure the advertise operation used by the default handlers
     // Possible values:
@@ -308,12 +277,10 @@ static const struct default_handlers_configuration  user_default_hnd_conf = {
 };
 
 /*
- ****************************************************************************************
- *
- * Central configuration (not used by current example)
- *
- ****************************************************************************************
- */
+****************************************************************************************
+* Central configuration (not used by current example)
+****************************************************************************************
+*/
 static const struct central_configuration user_central_conf = {
     /// GAPM requested operation:
     /// - GAPM_CONNECTION_DIRECT: Direct connection operation
@@ -405,12 +372,10 @@ static const struct central_configuration user_central_conf = {
 };
 
 /*
- ****************************************************************************************
- *
- * Security related configuration
- *
- ****************************************************************************************
- */
+****************************************************************************************
+* Security related configuration
+****************************************************************************************
+*/
 static const struct security_configuration user_security_conf = {
     // IO Capabilities
     #if defined (USER_CFG_FEAT_IO_CAP)

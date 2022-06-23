@@ -1,14 +1,7 @@
 /**
  ****************************************************************************************
- *
  * @file user_custs1_impl.h
- *
  * @brief Peripheral project Custom1 Server implementation header file.
- *
- * Copyright (C) 2015-2019 Dialog Semiconductor.
- * This computer program includes Confidential, Proprietary Information
- * of Dialog Semiconductor. All Rights Reserved.
- *
  ****************************************************************************************
  */
 
@@ -19,15 +12,8 @@
  ****************************************************************************************
  * @addtogroup APP
  * @ingroup RICOW
- *
  * @brief
- *
  * @{
- ****************************************************************************************
- */
-
-/*
- * DEFINES
  ****************************************************************************************
  */
 
@@ -43,19 +29,10 @@ enum
     CUSTS1_LED_ON,
 };
 
-/*
- * INCLUDE FILES
- ****************************************************************************************
- */
-
 #include "gapc_task.h"                 // gap functions and messages
 #include "gapm_task.h"                 // gap functions and messages
 #include "custs1_task.h"
 
-/*
- * FUNCTION DECLARATIONS
- ****************************************************************************************
- */
 
 /**
  ****************************************************************************************
@@ -169,12 +146,12 @@ void user_svc1_rest_att_info_req_handler(ke_msg_id_t const msgid,
                                          ke_task_id_t const dest_id,
                                          ke_task_id_t const src_id);
 
-/**
- ****************************************************************************************
- * @brief ADC sampling timer callback handler.
- ****************************************************************************************
- */
-void app_adcval1_timer_cb_handler(void);
+// /**
+//  ****************************************************************************************
+//  * @brief ADC sampling timer callback handler.
+//  ****************************************************************************************
+//  */
+// void app_adcval1_timer_cb_handler(void);
 
 /**
  ****************************************************************************************
@@ -191,5 +168,4 @@ void user_svc3_read_non_db_val_handler(ke_msg_id_t const msgid,
                                            ke_task_id_t const src_id);
 
 /// @} APP
-
 #endif // _USER_CUSTS1_IMPL_H_

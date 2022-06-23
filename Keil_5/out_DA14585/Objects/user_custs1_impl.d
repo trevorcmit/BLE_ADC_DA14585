@@ -119,3 +119,6 @@
 .\out_da14585\objects\user_custs1_impl.o: .\..\..\..\..\..\sdk\platform\driver\spi_flash\spi_flash.h
 .\out_da14585\objects\user_custs1_impl.o: .\..\..\..\..\..\sdk\platform\driver\i2c\i2c.h
 .\out_da14585\objects\user_custs1_impl.o: .\..\..\..\..\..\sdk\platform\driver\i2c_eeprom\i2c_eeprom.h
+.\out_da14585\objects\user_custs1_impl.o: .\..\..\..\..\..\sdk\platform\driver\adc\adc.h
+.\out_da14585\objects\user_custs1_impl.o: .\..\..\..\..\..\sdk\platform\driver\adc\adc_58x.h
+.\out_da14585\objects\user_custs1_impl.o: .\..\..\..\..\..\sdk\platform\driver\adc\adc_58x.h
