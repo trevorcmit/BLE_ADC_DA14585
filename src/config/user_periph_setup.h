@@ -19,23 +19,23 @@
 
 // UART Configuration
 // Define UART2 Tx Pad
-#if defined (__DA14531__)
-    #define UART2_TX_PORT           GPIO_PORT_0
-    #define UART2_TX_PIN            GPIO_PIN_6
-#else
+// #if defined (__DA14531__)
+    // #define UART2_TX_PORT           GPIO_PORT_0
+    // #define UART2_TX_PIN            GPIO_PIN_6
+// #else
     // #define UART2_TX_PORT           GPIO_PORT_0
     // #define UART2_TX_PIN            GPIO_PIN_4
-#endif
+// #endif
 
 // Define UART2 Settings
-#define UART2_BAUDRATE              UART_BAUDRATE_115200
-#define UART2_DATABITS              UART_DATABITS_8
-#define UART2_PARITY                UART_PARITY_NONE
-#define UART2_STOPBITS              UART_STOPBITS_1
-#define UART2_AFCE                  UART_AFCE_DIS
-#define UART2_FIFO                  UART_FIFO_EN
-#define UART2_TX_FIFO_LEVEL         UART_TX_FIFO_LEVEL_0
-#define UART2_RX_FIFO_LEVEL         UART_RX_FIFO_LEVEL_0
+// #define UART2_BAUDRATE              UART_BAUDRATE_115200
+// #define UART2_DATABITS              UART_DATABITS_8
+// #define UART2_PARITY                UART_PARITY_NONE
+// #define UART2_STOPBITS              UART_STOPBITS_1
+// #define UART2_AFCE                  UART_AFCE_DIS
+// #define UART2_FIFO                  UART_FIFO_EN
+// #define UART2_TX_FIFO_LEVEL         UART_TX_FIFO_LEVEL_0
+// #define UART2_RX_FIFO_LEVEL         UART_RX_FIFO_LEVEL_0
 
 
 /****************************************************************************************/
@@ -86,9 +86,6 @@
     // #define SPI_DI_PIN              GPIO_PIN_3
 #endif
 
-#if !defined (__DA14586__)
-    #define SPI_FLASH_DEV_SIZE          (256 * 1024)
-#endif
 
 
 /***************************************************************************************/
@@ -106,8 +103,8 @@
 
 
 // ADC Configuration
-// #define ADC_INPUT_PORT                  GPIO_PORT_0
-// #define ADC_INPUT_PIN                   GPIO_PIN_2  // 2 is not in used by default SPI configuration
+#define ADC_INPUT_PORT                  GPIO_PORT_0
+#define ADC_INPUT_PIN                   GPIO_PIN_2  // 2 is not in used by default SPI configuration
 
 
 

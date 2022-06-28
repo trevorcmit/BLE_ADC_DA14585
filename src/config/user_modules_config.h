@@ -17,11 +17,8 @@
 */
 /***************************************************************************************/
 /* Exclude or not a module in user's application code.                                 */
-/*                                                                                     */
 /* (0) - The module is included. The module's messages are handled by the SDK.         */
-/*                                                                                     */
 /* (1) - The module is excluded. The user must handle the module's messages.           */
-/*                                                                                     */
 /* Note:                                                                               */
 /*      This setting has no effect if the respective module is a BLE Profile           */
 /*      that is not used included in the user's application.                           */

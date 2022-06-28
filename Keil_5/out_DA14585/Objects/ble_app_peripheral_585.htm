@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\out_DA14585\Objects\ble_app_peripheral_585.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\out_DA14585\Objects\ble_app_peripheral_585.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Thu Jun 23 17:11:28 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Tue Jun 28 11:07:25 2022
 <BR><P>
 <H3>Maximum Stack Usage =        248 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1467,7 +1467,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[e6]"></a>GPIO_init</STRONG> (Thumb, 166 bytes, Stack size 40 bytes, gpio.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = GPIO_init &rArr; GPIO_reservations
+<BR><BR>[Stack]<UL><LI>Max Depth = 56<LI>Call Chain = GPIO_init &rArr; GPIO_reservations
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
 <LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_reservations
@@ -1695,7 +1695,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[6]"></a>BLE_WAKEUP_LP_Handler</STRONG> (Thumb, 98 bytes, Stack size 24 bytes, rwble.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = BLE_WAKEUP_LP_Handler &rArr; periph_init &rArr; set_pad_functions &rArr; GPIO_ConfigurePin &rArr; GPIO_SetPinFunction
+<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = BLE_WAKEUP_LP_Handler &rArr; periph_init &rArr; set_pad_functions &rArr; GPIO_ConfigurePin &rArr; GPIO_SetPinFunction
 </UL>
 <BR>[Calls]<UL><LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;syscntl_use_lowest_amba_clocks
 <LI><a href="#[ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;periph_init
@@ -2220,14 +2220,14 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> app_entry_point.o(.constdata)
 </UL>
-<P><STRONG><a name="[f6]"></a>GPIO_reservations</STRONG> (Thumb, 214 bytes, Stack size 20 bytes, user_periph_setup.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = GPIO_reservations
+<P><STRONG><a name="[f6]"></a>GPIO_reservations</STRONG> (Thumb, 216 bytes, Stack size 16 bytes, user_periph_setup.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = GPIO_reservations
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_init
 </UL>
 
-<P><STRONG><a name="[17f]"></a>set_pad_functions</STRONG> (Thumb, 96 bytes, Stack size 24 bytes, user_periph_setup.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = set_pad_functions &rArr; GPIO_ConfigurePin &rArr; GPIO_SetPinFunction
+<P><STRONG><a name="[17f]"></a>set_pad_functions</STRONG> (Thumb, 96 bytes, Stack size 16 bytes, user_periph_setup.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = set_pad_functions &rArr; GPIO_ConfigurePin &rArr; GPIO_SetPinFunction
 </UL>
 <BR>[Calls]<UL><LI><a href="#[fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ConfigurePin
 </UL>
@@ -2235,7 +2235,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[ed]"></a>periph_init</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, user_periph_setup.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = periph_init &rArr; set_pad_functions &rArr; GPIO_ConfigurePin &rArr; GPIO_SetPinFunction
+<BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = periph_init &rArr; set_pad_functions &rArr; GPIO_ConfigurePin &rArr; GPIO_SetPinFunction
 </UL>
 <BR>[Calls]<UL><LI><a href="#[180]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;patch_func
 <LI><a href="#[17f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;set_pad_functions

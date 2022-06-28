@@ -1196,54 +1196,54 @@ Image Symbol Table
     cal_failed                               0x07fc66d0   Data           1  rwble.o(.bss)
     STACK                                    0x07fc66d8   Section     1536  startup_da14585_586.o(STACK)
     heap_mem_area_not_ret                    0x07fc6cd8   Section     1036  jump_table.o(heap_mem_area_not_ret)
-    retention_mem_area0                      0x07fd4804   Section        8  arch_main.o(retention_mem_area0)
-    ret_mode_for_non_ret_heap                0x07fd4804   Data           1  arch_main.o(retention_mem_area0)
-    ret_mode                                 0x07fd4805   Data           1  arch_main.o(retention_mem_area0)
-    ret_mode_for_ret_data                    0x07fd4806   Data           1  arch_main.o(retention_mem_area0)
-    reinit_non_ret_heap                      0x07fd4807   Data           1  arch_main.o(retention_mem_area0)
-    code_size                                0x07fd4808   Data           4  arch_main.o(retention_mem_area0)
-    retention_mem_area0                      0x07fd480c   Section        4  arch_sleep.o(retention_mem_area0)
-    sleep_md                                 0x07fd480c   Data           1  arch_sleep.o(retention_mem_area0)
-    sleep_pend                               0x07fd480d   Data           1  arch_sleep.o(retention_mem_area0)
-    sleep_cnt                                0x07fd480e   Data           1  arch_sleep.o(retention_mem_area0)
-    sleep_ext_force                          0x07fd480f   Data           1  arch_sleep.o(retention_mem_area0)
-    retention_mem_area0                      0x07fd4810   Section       48  arch_system.o(retention_mem_area0)
-    retention_mem_area0                      0x07fd4840   Section        2  arch_rom.o(retention_mem_area0)
-    retention_mem_area0                      0x07fd4848   Section      188  gpio.o(retention_mem_area0)
-    retention_mem_area0                      0x07fd4904   Section        8  wkupct_quadec.o(retention_mem_area0)
-    QUADDEC_callback                         0x07fd4904   Data           4  wkupct_quadec.o(retention_mem_area0)
-    WKUPCT_callback                          0x07fd4908   Data           4  wkupct_quadec.o(retention_mem_area0)
-    retention_mem_area0                      0x07fd490c   Section        4  adc_58x.o(retention_mem_area0)
-    intr_cb                                  0x07fd490c   Data           4  adc_58x.o(retention_mem_area0)
-    retention_mem_area0                      0x07fd4910   Section       64  uart.o(retention_mem_area0)
-    uartn_env                                0x07fd4910   Data          64  uart.o(retention_mem_area0)
-    retention_mem_area0                      0x07fd4950   Section       20  rwble.o(retention_mem_area0)
-    success_cnt                              0x07fd4952   Data           2  rwble.o(retention_mem_area0)
-    retention_mem_area0                      0x07fd4964   Section        8  rwip.o(retention_mem_area0)
-    retention_mem_area0                      0x07fd496c   Section        4  rwip.o(retention_mem_area0)
-    retention_mem_area0                      0x07fd4970   Section        1  rf_585.o(retention_mem_area0)
-    near_field_mode                          0x07fd4970   Data           1  rf_585.o(retention_mem_area0)
-    retention_mem_area0                      0x07fd4974   Section      768  prf.o(retention_mem_area0)
-    retention_mem_area0                      0x07fd4c74   Section       92  app.o(retention_mem_area0)
-    i                                        0x07fd4c74   Data           1  app.o(retention_mem_area0)
-    k                                        0x07fd4c75   Data           1  app.o(retention_mem_area0)
-    j                                        0x07fd4c76   Data           1  app.o(retention_mem_area0)
-    adv_timer_id                             0x07fd4c77   Data           1  app.o(retention_mem_area0)
-    param_update_cmd                         0x07fd4c78   Data           4  app.o(retention_mem_area0)
-    set_dev_config_cmd                       0x07fd4c7c   Data           4  app.o(retention_mem_area0)
-    adv_cmd                                  0x07fd4c80   Data           4  app.o(retention_mem_area0)
-    start_connection_cmd                     0x07fd4c84   Data           4  app.o(retention_mem_area0)
-    adv_timeout_callback                     0x07fd4c88   Data           4  app.o(retention_mem_area0)
-    retention_mem_area0                      0x07fd4cd0   Section        1  app_task.o(retention_mem_area0)
-    retention_mem_area0                      0x07fd4cd4   Section       80  app_easy_timer.o(retention_mem_area0)
-    timer_callbacks                          0x07fd4cd4   Data          40  app_easy_timer.o(retention_mem_area0)
-    modified_timer_callbacks                 0x07fd4cfc   Data          40  app_easy_timer.o(retention_mem_area0)
-    retention_mem_area0                      0x07fd4d24   Section        4  user_custs1_impl.o(retention_mem_area0)
-    retention_mem_area0                      0x07fd4d28   Section       76  user_peripheral.o(retention_mem_area0)
-    retention_mem_area0                      0x07fd4d74   Section       40  pll_vcocal_lut.o(retention_mem_area0)
-    heap_db_area                             0x07fd4d9c   Section     1036  jump_table.o(heap_db_area)
-    heap_env_area                            0x07fd51a8   Section      628  jump_table.o(heap_env_area)
-    heap_msg_area                            0x07fd541c   Section     1404  jump_table.o(heap_msg_area)
+    retention_mem_area0                      0x07fce1f4   Section        8  arch_main.o(retention_mem_area0)
+    ret_mode_for_non_ret_heap                0x07fce1f4   Data           1  arch_main.o(retention_mem_area0)
+    ret_mode                                 0x07fce1f5   Data           1  arch_main.o(retention_mem_area0)
+    ret_mode_for_ret_data                    0x07fce1f6   Data           1  arch_main.o(retention_mem_area0)
+    reinit_non_ret_heap                      0x07fce1f7   Data           1  arch_main.o(retention_mem_area0)
+    code_size                                0x07fce1f8   Data           4  arch_main.o(retention_mem_area0)
+    retention_mem_area0                      0x07fce1fc   Section        4  arch_sleep.o(retention_mem_area0)
+    sleep_md                                 0x07fce1fc   Data           1  arch_sleep.o(retention_mem_area0)
+    sleep_pend                               0x07fce1fd   Data           1  arch_sleep.o(retention_mem_area0)
+    sleep_cnt                                0x07fce1fe   Data           1  arch_sleep.o(retention_mem_area0)
+    sleep_ext_force                          0x07fce1ff   Data           1  arch_sleep.o(retention_mem_area0)
+    retention_mem_area0                      0x07fce200   Section       48  arch_system.o(retention_mem_area0)
+    retention_mem_area0                      0x07fce230   Section        2  arch_rom.o(retention_mem_area0)
+    retention_mem_area0                      0x07fce238   Section      188  gpio.o(retention_mem_area0)
+    retention_mem_area0                      0x07fce2f4   Section        8  wkupct_quadec.o(retention_mem_area0)
+    QUADDEC_callback                         0x07fce2f4   Data           4  wkupct_quadec.o(retention_mem_area0)
+    WKUPCT_callback                          0x07fce2f8   Data           4  wkupct_quadec.o(retention_mem_area0)
+    retention_mem_area0                      0x07fce2fc   Section        4  adc_58x.o(retention_mem_area0)
+    intr_cb                                  0x07fce2fc   Data           4  adc_58x.o(retention_mem_area0)
+    retention_mem_area0                      0x07fce300   Section       64  uart.o(retention_mem_area0)
+    uartn_env                                0x07fce300   Data          64  uart.o(retention_mem_area0)
+    retention_mem_area0                      0x07fce340   Section       20  rwble.o(retention_mem_area0)
+    success_cnt                              0x07fce342   Data           2  rwble.o(retention_mem_area0)
+    retention_mem_area0                      0x07fce354   Section        8  rwip.o(retention_mem_area0)
+    retention_mem_area0                      0x07fce35c   Section        4  rwip.o(retention_mem_area0)
+    retention_mem_area0                      0x07fce360   Section        1  rf_585.o(retention_mem_area0)
+    near_field_mode                          0x07fce360   Data           1  rf_585.o(retention_mem_area0)
+    retention_mem_area0                      0x07fce364   Section      768  prf.o(retention_mem_area0)
+    retention_mem_area0                      0x07fce664   Section       92  app.o(retention_mem_area0)
+    i                                        0x07fce664   Data           1  app.o(retention_mem_area0)
+    k                                        0x07fce665   Data           1  app.o(retention_mem_area0)
+    j                                        0x07fce666   Data           1  app.o(retention_mem_area0)
+    adv_timer_id                             0x07fce667   Data           1  app.o(retention_mem_area0)
+    param_update_cmd                         0x07fce668   Data           4  app.o(retention_mem_area0)
+    set_dev_config_cmd                       0x07fce66c   Data           4  app.o(retention_mem_area0)
+    adv_cmd                                  0x07fce670   Data           4  app.o(retention_mem_area0)
+    start_connection_cmd                     0x07fce674   Data           4  app.o(retention_mem_area0)
+    adv_timeout_callback                     0x07fce678   Data           4  app.o(retention_mem_area0)
+    retention_mem_area0                      0x07fce6c0   Section        1  app_task.o(retention_mem_area0)
+    retention_mem_area0                      0x07fce6c4   Section       80  app_easy_timer.o(retention_mem_area0)
+    timer_callbacks                          0x07fce6c4   Data          40  app_easy_timer.o(retention_mem_area0)
+    modified_timer_callbacks                 0x07fce6ec   Data          40  app_easy_timer.o(retention_mem_area0)
+    retention_mem_area0                      0x07fce714   Section        4  user_custs1_impl.o(retention_mem_area0)
+    retention_mem_area0                      0x07fce718   Section       76  user_peripheral.o(retention_mem_area0)
+    retention_mem_area0                      0x07fce764   Section       40  pll_vcocal_lut.o(retention_mem_area0)
+    heap_db_area                             0x07fce78c   Section     1036  jump_table.o(heap_db_area)
+    heap_env_area                            0x07fceb98   Section      628  jump_table.o(heap_env_area)
+    heap_msg_area                            0x07fcee0c   Section    27532  jump_table.o(heap_msg_area)
 
     Global Symbols
 
@@ -2207,9 +2207,9 @@ Image Symbol Table
     custs_get_func_callbacks                 0x07fc39b5   Thumb Code    34  app_customs.o(.text)
     app_custs1_create_db                     0x07fc39d7   Thumb Code    54  app_customs.o(.text)
     app_custs1_process_handler               0x07fc3a15   Thumb Code    24  app_customs_task.o(.text)
-    GPIO_reservations                        0x07fc3a2d   Thumb Code   214  user_periph_setup.o(.text)
-    set_pad_functions                        0x07fc3b03   Thumb Code    96  user_periph_setup.o(.text)
-    periph_init                              0x07fc3b63   Thumb Code    52  user_periph_setup.o(.text)
+    GPIO_reservations                        0x07fc3a2d   Thumb Code   216  user_periph_setup.o(.text)
+    set_pad_functions                        0x07fc3b05   Thumb Code    96  user_periph_setup.o(.text)
+    periph_init                              0x07fc3b65   Thumb Code    52  user_periph_setup.o(.text)
     user_svc1_ctrl_wr_ind_handler            0x07fc3ba5   Thumb Code    34  user_custs1_impl.o(.text)
     user_svc1_led_wr_ind_handler             0x07fc3bc7   Thumb Code    48  user_custs1_impl.o(.text)
     user_svc1_long_val_cfg_ind_handler       0x07fc3bf7   Thumb Code    68  user_custs1_impl.o(.text)
@@ -2289,58 +2289,58 @@ Image Symbol Table
     __initial_sp                             0x07fc6cd8   Data           0  startup_da14585_586.o(STACK)
     heap_mem_area_not_ret$$Base              0x07fc6cd8   Number         0  jump_table.o(heap_mem_area_not_ret)
     rwip_heap_non_ret                        0x07fc6cd8   Data        1036  jump_table.o(heap_mem_area_not_ret)
-    Image$$RET_DATA_UNINIT$$Base             0x07fd4804   Number         0  anon$$obj.o ABSOLUTE
-    sys_startup_flag                         0x07fd4810   Data           1  arch_system.o(retention_mem_area0)
-    rcx_cal_in_progress                      0x07fd4811   Data           1  arch_system.o(retention_mem_area0)
-    force_rf_cal                             0x07fd4812   Data           1  arch_system.o(retention_mem_area0)
-    clk_freq_trim_reg_value                  0x07fd4814   Data           2  arch_system.o(retention_mem_area0)
-    last_temp_count                          0x07fd4816   Data           2  arch_system.o(retention_mem_area0)
-    arch_wkupct_deb_time                     0x07fd4818   Data           2  arch_system.o(retention_mem_area0)
-    iq_trim_bias_ctrl1_reg                   0x07fd481a   Data           2  arch_system.o(retention_mem_area0)
-    iq_trim_rf_mixer_ctrl1_reg               0x07fd481c   Data           2  arch_system.o(retention_mem_area0)
-    last_temp_time                           0x07fd4820   Data           4  arch_system.o(retention_mem_area0)
-    lp_clk_sel                               0x07fd4824   Data           4  arch_system.o(retention_mem_area0)
-    rcx_freq                                 0x07fd4828   Data           4  arch_system.o(retention_mem_area0)
-    rcx_period                               0x07fd482c   Data           4  arch_system.o(retention_mem_area0)
-    dev_bdaddr                               0x07fd4830   Data           6  arch_system.o(retention_mem_area0)
-    rcx_slot_duration                        0x07fd4838   Data           8  arch_system.o(retention_mem_area0)
-    heap_log                                 0x07fd4840   Data           2  arch_rom.o(retention_mem_area0)
-    GPIO_status                              0x07fd4848   Data           8  gpio.o(retention_mem_area0)
-    GPIO                                     0x07fd4850   Data         160  gpio.o(retention_mem_area0)
-    GPIOHandlerFunction                      0x07fd48f0   Data          20  gpio.o(retention_mem_area0)
-    arch_rwble_last_event                    0x07fd4950   Data           1  rwble.o(retention_mem_area0)
-    set_boost_low_vbat1v_overhead            0x07fd4951   Data           1  rwble.o(retention_mem_area0)
-    twirq_set                                0x07fd4954   Data           4  rwble.o(retention_mem_area0)
-    twirq_set_min                            0x07fd4958   Data           4  rwble.o(retention_mem_area0)
-    twirq_set_max                            0x07fd495c   Data           4  rwble.o(retention_mem_area0)
-    ble_finetim_corr                         0x07fd4960   Data           4  rwble.o(retention_mem_area0)
-    sleep_lp_cycles                          0x07fd4964   Data           4  rwip.o(retention_mem_area0)
-    retained_BLE_EM_BASE_REG                 0x07fd4968   Data           4  rwip.o(retention_mem_area0)
-    slp_period_retained                      0x07fd496c   Data           4  rwip.o(retention_mem_area0)
-    prf_env                                  0x07fd4974   Data         768  prf.o(retention_mem_area0)
-    app_env                                  0x07fd4c8c   Data          12  app.o(retention_mem_area0)
-    app_prf_srv_perm                         0x07fd4c98   Data          20  app.o(retention_mem_area0)
-    device_info                              0x07fd4cac   Data          36  app.o(retention_mem_area0)
-    app_state                                0x07fd4cd0   Data           1  app_task.o(retention_mem_area0)
-    indication_counter                       0x07fd4d24   Data           2  user_custs1_impl.o(retention_mem_area0)
-    non_db_val_counter                       0x07fd4d26   Data           2  user_custs1_impl.o(retention_mem_area0)
-    app_connection_idx                       0x07fd4d28   Data           1  user_peripheral.o(retention_mem_area0)
-    app_adv_data_update_timer_used           0x07fd4d29   Data           1  user_peripheral.o(retention_mem_area0)
-    app_param_update_request_timer_used      0x07fd4d2a   Data           1  user_peripheral.o(retention_mem_area0)
-    mnf_data_index                           0x07fd4d2b   Data           1  user_peripheral.o(retention_mem_area0)
-    stored_adv_data_len                      0x07fd4d2c   Data           1  user_peripheral.o(retention_mem_area0)
-    stored_scan_rsp_data_len                 0x07fd4d2d   Data           1  user_peripheral.o(retention_mem_area0)
-    timer_used                               0x07fd4d2e   Data           2  user_peripheral.o(retention_mem_area0)
-    mnf_data                                 0x07fd4d30   Data           6  user_peripheral.o(retention_mem_area0)
-    stored_adv_data                          0x07fd4d36   Data          31  user_peripheral.o(retention_mem_area0)
-    stored_scan_rsp_data                     0x07fd4d55   Data          31  user_peripheral.o(retention_mem_area0)
-    calcap_minmax                            0x07fd4d74   Data           1  pll_vcocal_lut.o(retention_mem_area0)
-    vcocal_ctrl_reg_val                      0x07fd4d76   Data           2  pll_vcocal_lut.o(retention_mem_area0)
-    vco_calcap_ranges                        0x07fd4d78   Data          16  pll_vcocal_lut.o(retention_mem_area0)
-    rf_cal_cap                               0x07fd4d88   Data          20  pll_vcocal_lut.o(retention_mem_area0)
-    rwip_heap_db_ret                         0x07fd4d9c   Data        1036  jump_table.o(heap_db_area)
-    rwip_heap_env_ret                        0x07fd51a8   Data         628  jump_table.o(heap_env_area)
-    rwip_heap_msg_ret                        0x07fd541c   Data        1404  jump_table.o(heap_msg_area)
+    Image$$RET_DATA_UNINIT$$Base             0x07fce1f4   Number         0  anon$$obj.o ABSOLUTE
+    sys_startup_flag                         0x07fce200   Data           1  arch_system.o(retention_mem_area0)
+    rcx_cal_in_progress                      0x07fce201   Data           1  arch_system.o(retention_mem_area0)
+    force_rf_cal                             0x07fce202   Data           1  arch_system.o(retention_mem_area0)
+    clk_freq_trim_reg_value                  0x07fce204   Data           2  arch_system.o(retention_mem_area0)
+    last_temp_count                          0x07fce206   Data           2  arch_system.o(retention_mem_area0)
+    arch_wkupct_deb_time                     0x07fce208   Data           2  arch_system.o(retention_mem_area0)
+    iq_trim_bias_ctrl1_reg                   0x07fce20a   Data           2  arch_system.o(retention_mem_area0)
+    iq_trim_rf_mixer_ctrl1_reg               0x07fce20c   Data           2  arch_system.o(retention_mem_area0)
+    last_temp_time                           0x07fce210   Data           4  arch_system.o(retention_mem_area0)
+    lp_clk_sel                               0x07fce214   Data           4  arch_system.o(retention_mem_area0)
+    rcx_freq                                 0x07fce218   Data           4  arch_system.o(retention_mem_area0)
+    rcx_period                               0x07fce21c   Data           4  arch_system.o(retention_mem_area0)
+    dev_bdaddr                               0x07fce220   Data           6  arch_system.o(retention_mem_area0)
+    rcx_slot_duration                        0x07fce228   Data           8  arch_system.o(retention_mem_area0)
+    heap_log                                 0x07fce230   Data           2  arch_rom.o(retention_mem_area0)
+    GPIO_status                              0x07fce238   Data           8  gpio.o(retention_mem_area0)
+    GPIO                                     0x07fce240   Data         160  gpio.o(retention_mem_area0)
+    GPIOHandlerFunction                      0x07fce2e0   Data          20  gpio.o(retention_mem_area0)
+    arch_rwble_last_event                    0x07fce340   Data           1  rwble.o(retention_mem_area0)
+    set_boost_low_vbat1v_overhead            0x07fce341   Data           1  rwble.o(retention_mem_area0)
+    twirq_set                                0x07fce344   Data           4  rwble.o(retention_mem_area0)
+    twirq_set_min                            0x07fce348   Data           4  rwble.o(retention_mem_area0)
+    twirq_set_max                            0x07fce34c   Data           4  rwble.o(retention_mem_area0)
+    ble_finetim_corr                         0x07fce350   Data           4  rwble.o(retention_mem_area0)
+    sleep_lp_cycles                          0x07fce354   Data           4  rwip.o(retention_mem_area0)
+    retained_BLE_EM_BASE_REG                 0x07fce358   Data           4  rwip.o(retention_mem_area0)
+    slp_period_retained                      0x07fce35c   Data           4  rwip.o(retention_mem_area0)
+    prf_env                                  0x07fce364   Data         768  prf.o(retention_mem_area0)
+    app_env                                  0x07fce67c   Data          12  app.o(retention_mem_area0)
+    app_prf_srv_perm                         0x07fce688   Data          20  app.o(retention_mem_area0)
+    device_info                              0x07fce69c   Data          36  app.o(retention_mem_area0)
+    app_state                                0x07fce6c0   Data           1  app_task.o(retention_mem_area0)
+    indication_counter                       0x07fce714   Data           2  user_custs1_impl.o(retention_mem_area0)
+    non_db_val_counter                       0x07fce716   Data           2  user_custs1_impl.o(retention_mem_area0)
+    app_connection_idx                       0x07fce718   Data           1  user_peripheral.o(retention_mem_area0)
+    app_adv_data_update_timer_used           0x07fce719   Data           1  user_peripheral.o(retention_mem_area0)
+    app_param_update_request_timer_used      0x07fce71a   Data           1  user_peripheral.o(retention_mem_area0)
+    mnf_data_index                           0x07fce71b   Data           1  user_peripheral.o(retention_mem_area0)
+    stored_adv_data_len                      0x07fce71c   Data           1  user_peripheral.o(retention_mem_area0)
+    stored_scan_rsp_data_len                 0x07fce71d   Data           1  user_peripheral.o(retention_mem_area0)
+    timer_used                               0x07fce71e   Data           2  user_peripheral.o(retention_mem_area0)
+    mnf_data                                 0x07fce720   Data           6  user_peripheral.o(retention_mem_area0)
+    stored_adv_data                          0x07fce726   Data          31  user_peripheral.o(retention_mem_area0)
+    stored_scan_rsp_data                     0x07fce745   Data          31  user_peripheral.o(retention_mem_area0)
+    calcap_minmax                            0x07fce764   Data           1  pll_vcocal_lut.o(retention_mem_area0)
+    vcocal_ctrl_reg_val                      0x07fce766   Data           2  pll_vcocal_lut.o(retention_mem_area0)
+    vco_calcap_ranges                        0x07fce768   Data          16  pll_vcocal_lut.o(retention_mem_area0)
+    rf_cal_cap                               0x07fce778   Data          20  pll_vcocal_lut.o(retention_mem_area0)
+    rwip_heap_db_ret                         0x07fce78c   Data        1036  jump_table.o(heap_db_area)
+    rwip_heap_env_ret                        0x07fceb98   Data         628  jump_table.o(heap_env_area)
+    rwip_heap_msg_ret                        0x07fcee0c   Data       27532  jump_table.o(heap_msg_area)
     ble_wakeup_executed                      0x07fd7600   Data           0  da14585_symbols.txt ABSOLUTE
     rf_in_sleep                              0x07fd7601   Data           0  da14585_symbols.txt ABSOLUTE
     custom_preinit                           0x07fd7604   Data           0  da14585_symbols.txt ABSOLUTE
@@ -2474,9 +2474,9 @@ Memory Map of the image
 
 
 
-  Load Region LR_IROM3 (Base: 0x07fc0510, Size: 0x00006180, Max: 0x000142f4, ABSOLUTE)
+  Load Region LR_IROM3 (Base: 0x07fc0510, Size: 0x00006180, Max: 0x0000dce4, ABSOLUTE)
 
-    Execution Region ER_IROM3 (Exec base: 0x07fc0510, Load base: 0x07fc0510, Size: 0x00006180, Max: 0x000142f4, ABSOLUTE)
+    Execution Region ER_IROM3 (Exec base: 0x07fc0510, Load base: 0x07fc0510, Size: 0x00006180, Max: 0x0000dce4, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -2623,48 +2623,48 @@ Memory Map of the image
 
 
 
-  Load Region LR_RETAINED_RAM0 (Base: 0x07fd4804, Size: 0x00000000, Max: 0x000013fc, ABSOLUTE)
+  Load Region LR_RETAINED_RAM0 (Base: 0x07fce1f4, Size: 0x00000000, Max: 0x00007a0c, ABSOLUTE)
 
-    Execution Region RET_DATA_UNINIT (Exec base: 0x07fd4804, Load base: 0x07fd4804, Size: 0x00000000, Max: 0x00000000, ABSOLUTE, UNINIT)
+    Execution Region RET_DATA_UNINIT (Exec base: 0x07fce1f4, Load base: 0x07fce1f4, Size: 0x00000000, Max: 0x00000000, ABSOLUTE, UNINIT)
 
     **** No section assigned to this execution region ****
 
 
-    Execution Region RET_DATA (Exec base: 0x07fd4804, Load base: 0x07fd4804, Size: 0x00000598, Max: 0x00000800, ABSOLUTE)
+    Execution Region RET_DATA (Exec base: 0x07fce1f4, Load base: 0x07fce1f4, Size: 0x00000598, Max: 0x00000800, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x07fd4804        -       0x00000008   Zero   RW          374    retention_mem_area0  arch_main.o
-    0x07fd480c        -       0x00000004   Zero   RW          606    retention_mem_area0  arch_sleep.o
-    0x07fd4810        -       0x00000030   Zero   RW          667    retention_mem_area0  arch_system.o
-    0x07fd4840        -       0x00000002   Zero   RW          777    retention_mem_area0  arch_rom.o
-    0x07fd4842   0x07fd4804   0x00000006   PAD
-    0x07fd4848        -       0x000000bc   Zero   RW          870    retention_mem_area0  gpio.o
-    0x07fd4904        -       0x00000008   Zero   RW          965    retention_mem_area0  wkupct_quadec.o
-    0x07fd490c        -       0x00000004   Zero   RW         1075    retention_mem_area0  adc_58x.o
-    0x07fd4910        -       0x00000040   Zero   RW         1864    retention_mem_area0  uart.o
-    0x07fd4950        -       0x00000014   Zero   RW         1991    retention_mem_area0  rwble.o
-    0x07fd4964        -       0x00000008   Zero   RW         2042    retention_mem_area0  rwip.o
-    0x07fd496c        -       0x00000004   Zero   RW         2043    retention_mem_area0  rwip.o
-    0x07fd4970        -       0x00000001   Zero   RW         2073    retention_mem_area0  rf_585.o
-    0x07fd4971   0x07fd4804   0x00000003   PAD
-    0x07fd4974        -       0x00000300   Zero   RW         2453    retention_mem_area0  prf.o
-    0x07fd4c74        -       0x0000005c   Zero   RW         2573    retention_mem_area0  app.o
-    0x07fd4cd0        -       0x00000001   Zero   RW         2738    retention_mem_area0  app_task.o
-    0x07fd4cd1   0x07fd4804   0x00000003   PAD
-    0x07fd4cd4        -       0x00000050   Zero   RW         2974    retention_mem_area0  app_easy_timer.o
-    0x07fd4d24        -       0x00000004   Zero   RW         3164    retention_mem_area0  user_custs1_impl.o
-    0x07fd4d28        -       0x0000004c   Zero   RW         3217    retention_mem_area0  user_peripheral.o
-    0x07fd4d74        -       0x00000028   Zero   RW         3271    retention_mem_area0  da14585_586.lib(pll_vcocal_lut.o)
+    0x07fce1f4        -       0x00000008   Zero   RW          374    retention_mem_area0  arch_main.o
+    0x07fce1fc        -       0x00000004   Zero   RW          606    retention_mem_area0  arch_sleep.o
+    0x07fce200        -       0x00000030   Zero   RW          667    retention_mem_area0  arch_system.o
+    0x07fce230        -       0x00000002   Zero   RW          777    retention_mem_area0  arch_rom.o
+    0x07fce232   0x07fce1f4   0x00000006   PAD
+    0x07fce238        -       0x000000bc   Zero   RW          870    retention_mem_area0  gpio.o
+    0x07fce2f4        -       0x00000008   Zero   RW          965    retention_mem_area0  wkupct_quadec.o
+    0x07fce2fc        -       0x00000004   Zero   RW         1075    retention_mem_area0  adc_58x.o
+    0x07fce300        -       0x00000040   Zero   RW         1864    retention_mem_area0  uart.o
+    0x07fce340        -       0x00000014   Zero   RW         1991    retention_mem_area0  rwble.o
+    0x07fce354        -       0x00000008   Zero   RW         2042    retention_mem_area0  rwip.o
+    0x07fce35c        -       0x00000004   Zero   RW         2043    retention_mem_area0  rwip.o
+    0x07fce360        -       0x00000001   Zero   RW         2073    retention_mem_area0  rf_585.o
+    0x07fce361   0x07fce1f4   0x00000003   PAD
+    0x07fce364        -       0x00000300   Zero   RW         2453    retention_mem_area0  prf.o
+    0x07fce664        -       0x0000005c   Zero   RW         2573    retention_mem_area0  app.o
+    0x07fce6c0        -       0x00000001   Zero   RW         2738    retention_mem_area0  app_task.o
+    0x07fce6c1   0x07fce1f4   0x00000003   PAD
+    0x07fce6c4        -       0x00000050   Zero   RW         2974    retention_mem_area0  app_easy_timer.o
+    0x07fce714        -       0x00000004   Zero   RW         3164    retention_mem_area0  user_custs1_impl.o
+    0x07fce718        -       0x0000004c   Zero   RW         3217    retention_mem_area0  user_peripheral.o
+    0x07fce764        -       0x00000028   Zero   RW         3271    retention_mem_area0  da14585_586.lib(pll_vcocal_lut.o)
 
 
-    Execution Region RET_HEAP (Exec base: 0x07fd4d9c, Load base: 0x07fd4804, Size: 0x00000bfc, Max: 0x00000bfc, ABSOLUTE, UNINIT)
+    Execution Region RET_HEAP (Exec base: 0x07fce78c, Load base: 0x07fce1f4, Size: 0x0000720c, Max: 0x0000720c, ABSOLUTE, UNINIT)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x07fd4d9c        -       0x0000040c   Zero   RW          540    heap_db_area        jump_table.o
-    0x07fd51a8        -       0x00000274   Zero   RW          541    heap_env_area       jump_table.o
-    0x07fd541c        -       0x0000057c   Zero   RW          543    heap_msg_area       jump_table.o
+    0x07fce78c        -       0x0000040c   Zero   RW          540    heap_db_area        jump_table.o
+    0x07fceb98        -       0x00000274   Zero   RW          541    heap_env_area       jump_table.o
+    0x07fcee0c        -       0x00006b8c   Zero   RW          543    heap_msg_area       jump_table.o
 
 
 
@@ -2710,7 +2710,7 @@ Image component sizes
         96         10          0          0          0       1497   hardfault_handler.o
        120         10          0          0          0       2225   hw_otpc_58x.o
         56         12          0          0         48       8636   i2c.o
-        80          4        576          0       4104       8409   jump_table.o
+        80          4        576          0      30232       8397   jump_table.o
        156         16          0          0          0       9559   nmi_handler.o
        200         14         14          0          0       3008   nvds.o
         16          4          0          0          0       1229   otp_hdr.o
@@ -2726,12 +2726,12 @@ Image component sizes
          0          0       1421          0          0       2019   user_custs1_def.o
        344         12          0          0          4       4305   user_custs1_impl.o
          0          0         56          0          0        937   user_custs_config.o
-       376         14          0          0          0       3781   user_periph_setup.o
+       376         12          0          0          0       3769   user_periph_setup.o
        852         68          4          0         76       7351   user_peripheral.o
        116         12          0          0          8       4370   wkupct_quadec.o
 
     ----------------------------------------------------------------------
-     15144       1096       2982          4       9112     833476   Object Totals
+     15144       1094       2982          4      35240     833452   Object Totals
          0          0         48          0        984          0   (incl. Generated)
          0          0          5          0         19          0   (incl. Padding)
 
@@ -2776,14 +2776,14 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     21886       1456       3230          4       9152     832028   Grand Totals
-     21886       1456       3230          4       9152     832028   ELF Image Totals
-     21886       1456       3230          4          0          0   ROM Totals
+     21886       1454       3230          4      35280     832004   Grand Totals
+     21886       1454       3230          4      35280     832004   ELF Image Totals
+     21886       1454       3230          4          0          0   ROM Totals
 
 ==============================================================================
 
     Total RO  Size (Code + RO Data)                25116 (  24.53kB)
-    Total RW  Size (RW Data + ZI Data)              9156 (   8.94kB)
+    Total RW  Size (RW Data + ZI Data)             35284 (  34.46kB)
     Total ROM Size (Code + RO Data + RW Data)      25120 (  24.53kB)
 
 ==============================================================================

@@ -12,7 +12,6 @@
 * @defgroup USER_CONFIG
 * @ingroup USER
 * @brief Custom Server 1 (CUSTS1) profile database definitions.
-*
 * @{
 ****************************************************************************************
 */

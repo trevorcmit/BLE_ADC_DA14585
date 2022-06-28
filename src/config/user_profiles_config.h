@@ -26,7 +26,6 @@
 /* Profile application configuration section                                           */
 /***************************************************************************************/
 
-
 // DISS application profile configuration
 #define APP_DIS_FEATURES                (DIS_MANUFACTURER_NAME_CHAR_SUP | \
                                         DIS_MODEL_NB_STR_CHAR_SUP | \

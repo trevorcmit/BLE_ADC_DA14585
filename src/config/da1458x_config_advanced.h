@@ -6,7 +6,6 @@
 */
 #ifndef _DA1458X_CONFIG_ADVANCED_H_
 #define _DA1458X_CONFIG_ADVANCED_H_
-
 #include "da1458x_stack_config.h"
 
 #if !defined (__DA14531__)
@@ -27,39 +26,17 @@
 /****************************************************************************************************************/
 #define CFG_USE_DEFAULT_XTAL16M_TRIM_VALUE_IF_NOT_CALIBRATED
 
-/****************************************************************************************************************/
-/* Periodic wakeup period to poll GTL iface. Time in msec.                                                      */
-/****************************************************************************************************************/
-#define CFG_MAX_SLEEP_DURATION_PERIODIC_WAKEUP_MS                  500  // 0.5s
-
-/****************************************************************************************************************/
-/* Periodic wakeup period if GTL iface is not enabled. Time in msec.                                            */
-/****************************************************************************************************************/
-#define CFG_MAX_SLEEP_DURATION_EXTERNAL_WAKEUP_MS              600000  // 600s
-
-/****************************************************************************************************************/
-/* Wakeup from external processor running host application.                                                     */
-/****************************************************************************************************************/
-#undef CFG_EXTERNAL_WAKEUP
-
-/****************************************************************************************************************/
-/* Wakeup external processor when a message is sent to GTL                                                      */
-/****************************************************************************************************************/
-#undef CFG_WAKEUP_EXT_PROCESSOR
+#define CFG_MAX_SLEEP_DURATION_PERIODIC_WAKEUP_MS      500     // 0.5s, Periodic wakeup period to poll GTL iface. Time in msec. 
+#define CFG_MAX_SLEEP_DURATION_EXTERNAL_WAKEUP_MS      600000  // 600s, Periodic wakeup period if GTL iface is not enabled. Time in msec.   
+#undef CFG_EXTERNAL_WAKEUP                                     // Wakeup from external processor running host application. 
+#undef CFG_WAKEUP_EXT_PROCESSOR                                // Wakeup external processor when a message is sent to GTL   
 
 /****************************************************************************************************************/
 /* Enables True Random Number Generator. A true random number, generated at system initialization, is used to   */
 /* seed any random number generator (C standard library, ChaCha20, etc.). The following supported options       */
 /* provide a trade-off between code size and start-up latency.                                                  */
-/* - undefined (or 0): TRNG is disabled.                                                                        */
-/* -   32:  Enables TRNG with   32 Bytes Buffer.                                                                */
-/* -   64:  Enables TRNG with   64 Bytes Buffer.                                                                */
-/* -  128:  Enables TRNG with  128 Bytes Buffer.                                                                */
-/* -  256:  Enables TRNG with  256 Bytes Buffer.                                                                */
-/* -  512:  Enables TRNG with  512 Bytes Buffer.                                                                */
-/* - 1024:  Enables TRNG with 1024 Bytes Buffer.                                                                */
 /****************************************************************************************************************/
-#define CFG_TRNG (1024)
+#define CFG_TRNG (1024)        // Enables TRNG with 1024 Bytes buffer. (Can do 32, 64, 128, 256, 512, 1024)
 
 /****************************************************************************************************************/
 /* Creation of private and public keys using Elliptic Curve Diffie Hellman algorithms.                          */
@@ -69,18 +46,14 @@
 /*              enable faster start-up time and reduce code size.                                               */
 /****************************************************************************************************************/
 #undef CFG_ENABLE_SMP_SECURE
-
-/****************************************************************************************************************/
-/* Uses ChaCha20 random number generator instead of the C standard library random number generator.             */
-/****************************************************************************************************************/
-#undef CFG_USE_CHACHA20_RAND
+#undef CFG_USE_CHACHA20_RAND // Uses ChaCha20 random number generator instead of the C standard library random number generator.   
 
 /****************************************************************************************************************/
 /* Custom heap sizes                                                                                            */
 /****************************************************************************************************************/
 // #define DB_HEAP_SZ              1024
 // #define ENV_HEAP_SZ             4928
-// #define MSG_HEAP_SZ             6880
+#define MSG_HEAP_SZ            27520 //18920 // Default 6880
 // #define NON_RET_HEAP_SZ         2048
 
 /****************************************************************************************************************/
@@ -103,6 +76,7 @@
 /* - CFG_NVDS_TAG_BLE_CA_NB_BAD_PKT     Number  of bad packets needed to remove a channel                       */
 /****************************************************************************************************************/
 #define CFG_NVDS_TAG_BD_ADDRESS             {0x03, 0x00, 0x70, 0xCA, 0xEA, 0x80}
+// #define CFG_NVDS_TAG_BD_ADDRESS             {0x04, 0x00, 0x70, 0xCA, 0xEA, 0x80}
 
 #define CFG_NVDS_TAG_LPCLK_DRIFT            DRIFT_500PPM
 #define CFG_NVDS_TAG_BLE_CA_TIMER_DUR       2000
@@ -119,15 +93,8 @@
 /****************************************************************************************************************/
 #undef CFG_LOG_HEAP_USAGE
 
-/****************************************************************************************************************/
-/* Enables the BLE statistics measurement feature.                                                              */
-/****************************************************************************************************************/
-#undef CFG_BLE_METRICS
-
-/****************************************************************************************************************/
-/* Output the Hardfault arguments to serial/UART interface.                                                     */
-/****************************************************************************************************************/
-#undef CFG_PRODUCTION_DEBUG_OUTPUT
+#undef CFG_BLE_METRICS                     // Enables the BLE statistics measurement feature.          
+#undef CFG_PRODUCTION_DEBUG_OUTPUT         // Output the Hardfault arguments to serial/UART interface. 
 
 /****************************************************************************************************************/
 /* Maximum supported TX data packet length (supportedMaxTxOctets value, as defined in 4.2 Specification).       */
@@ -155,17 +122,10 @@
 
 /****************************************************************************************************************/
 /* Select external application/host transport layer:                                                            */
-/*     - 0 = GTL (auto)                                                                                         */
-/*     - 1 = HCI (auto)                                                                                         */
-/*     - 8 = GTL (fixed)                                                                                        */
-/*     - 9 = HCI (fixed)                                                                                        */
+/* - 0 = GTL (auto), 1 = HCI (auto), 8 = GTL (fixed), 9 = HCI (fixed)                                           */
 /****************************************************************************************************************/
-#define CFG_USE_H4TL                    (0)
-
-/****************************************************************************************************************/
-/* Duplicate filter max value for the scan report list. The maximum value shall be 100.                         */
-/****************************************************************************************************************/
-#define CFG_BLE_DUPLICATE_FILTER_MAX    (10)
+#define CFG_USE_H4TL                    (0) 
+#define CFG_BLE_DUPLICATE_FILTER_MAX    (10) // Duplicate filter max value for the scan report list. The maximum value shall be 100
 
 /****************************************************************************************************************/
 /* Duplicate filter flag for the scan report list. This flag controls what will be reported if the              */
@@ -173,11 +133,7 @@
 /*     - If the flag is defined, the extra devices are considered to be in the list and will not be reported.   */
 /****************************************************************************************************************/
 #undef CFG_BLE_DUPLICATE_FILTER_FOUND
-
-/****************************************************************************************************************/
-/* Resolving list maximum size.                                                                                 */
-/****************************************************************************************************************/
-#define CFG_LLM_RESOLVING_LIST_MAX      LLM_RESOLVING_LIST_MAX
+#define CFG_LLM_RESOLVING_LIST_MAX      LLM_RESOLVING_LIST_MAX // Resolving list maximum size.    
 
 /****************************************************************************************************************/
 /* Enables automatic data packet length negotiation.                                                            */
@@ -185,43 +141,23 @@
 /****************************************************************************************************************/
 #undef AUTO_DATA_LENGTH_NEGOTIATION_UPON_NEW_CONNECTION
 
-/****************************************************************************************************************/
-/* Maximum retention memory in bytes. The base address of the retention data is calculated from the selected    */
-/* size.                                                                                                        */
-/****************************************************************************************************************/
+/********************************************************************************************************************/
+/* Maximum retention memory in bytes. The base address of the retention data is calculated from the selected size   */
+/********************************************************************************************************************/
 #define CFG_RET_DATA_SIZE    (2048)
+// #define CFG_RET_DATA_SIZE    (4096)
 
-/****************************************************************************************************************/
-/* Maximum uninitialized retained data required by the application.                                             */
-/****************************************************************************************************************/
-#define CFG_RET_DATA_UNINIT_SIZE (0)
+#define CFG_RET_DATA_UNINIT_SIZE (0) // Maximum uninitialized retained data required by the application.  
 
-/****************************************************************************************************************/
-/* The Keil scatter file may be provided by the user. If the user provides his own scatter file, the system has */
-/* to be aware which RAM blocks has to retain. The 4th RAM block is always retained, since it contains the ROM  */
-/* data.                                                                                                        */
-/*     - CFG_RETAIN_RAM_1_BLOCK: if defined, the 1st RAM block must be retained.                                */
-/*     - CFG_RETAIN_RAM_2_BLOCK: if defined, the 2nd RAM block must be retained.                                */
-/*     - CFG_RETAIN_RAM_3_BLOCK: if defined, the 3rd RAM block must be retained.                                */
-/*                                                                                                              */
-/* If the CFG_CUSTOM_SCATTER_FILE flag is undefined, the system knows which blocks to retain based on the       */
-/* default SDK scatter file.                                                                                    */
-/****************************************************************************************************************/
-#undef CFG_CUSTOM_SCATTER_FILE
+#undef CFG_CUSTOM_SCATTER_FILE       // if undef, system knows which blocks to retain based on default SDK.
 #ifdef CFG_CUSTOM_SCATTER_FILE
-    #define CFG_RETAIN_RAM_1_BLOCK
-    #define CFG_RETAIN_RAM_2_BLOCK
-    #define CFG_RETAIN_RAM_3_BLOCK
+    #define CFG_RETAIN_RAM_1_BLOCK   // if defined, the 1st RAM block must be retained.    
+    #define CFG_RETAIN_RAM_2_BLOCK   // if defined, the 2nd RAM block must be retained.    
+    #define CFG_RETAIN_RAM_3_BLOCK   // if defined, the 3rd RAM block must be retained.    
 #endif
 
-/****************************************************************************************************************/
-/* Code location selection.                                                                                     */
-/*     - CFG_CODE_LOCATION_EXT: Code is loaded from SPI flash / I2C EEPROM / UART                               */
-/*     - CFG_CODE_LOCATION_OTP: Code is burned in the OTP                                                       */
-/* The above options are mutually exclusive and exactly one of them must be enabled.                            */
-/****************************************************************************************************************/
-#define CFG_CODE_LOCATION_EXT
-#undef CFG_CODE_LOCATION_OTP
+#define CFG_CODE_LOCATION_EXT        // Code is loaded from SPI flash / I2C EEPROM / UART        
+#undef CFG_CODE_LOCATION_OTP         // Code is burned in the OTP      
 
 /****************************************************************************************************************/
 /* Temperature range selection.                                                                                 */
@@ -242,9 +178,13 @@
 
 
 
+
+
+//******************************************//
+// ONLY IMPORTANT SECTION: DA14531 section  // 
+//******************************************//
+
 #else
-
-
 
 /****************************************************************************************************************/
 /* Low Power clock selection.                                                                                   */
@@ -262,17 +202,9 @@
 /****************************************************************************************************************/
 /* Periodic wakeup period if GTL iface is not enabled. Time in msec.                                            */
 /****************************************************************************************************************/
-#define CFG_MAX_SLEEP_DURATION_EXTERNAL_WAKEUP_MS              600000  // 600s
-
-/****************************************************************************************************************/
-/* Wakeup from external processor running host application.                                                     */
-/****************************************************************************************************************/
-#undef CFG_EXTERNAL_WAKEUP
-
-/****************************************************************************************************************/
-/* Wakeup external processor when a message is sent to GTL                                                      */
-/****************************************************************************************************************/
-#undef CFG_WAKEUP_EXT_PROCESSOR
+#define CFG_MAX_SLEEP_DURATION_EXTERNAL_WAKEUP_MS              600000   // 600s
+#undef CFG_EXTERNAL_WAKEUP            // Wakeup from external processor running host application
+#undef CFG_WAKEUP_EXT_PROCESSOR       // Wakeup external processor when a message is sent to GTL
 
 /****************************************************************************************************************/
 /* Enables True Random Number Generator. A true random number, generated at system initialization, is used to   */
@@ -289,10 +221,7 @@
 /****************************************************************************************************************/
 #undef CFG_ENABLE_SMP_SECURE
 
-/****************************************************************************************************************/
-/* Uses ChaCha20 random number generator instead of the C standard library random number generator.             */
-/****************************************************************************************************************/
-#undef CFG_USE_CHACHA20_RAND
+#undef CFG_USE_CHACHA20_RAND       // Use ChaCha20 RNG instead of C Standard Library RNG
 
 /****************************************************************************************************************/
 /* Custom heap sizes                                                                                            */
@@ -337,16 +266,8 @@
 /* and type disp_heaplog() in debugger's command window. Heap memory statistics will be displayed on window     */
 /****************************************************************************************************************/
 #undef CFG_LOG_HEAP_USAGE
-
-/****************************************************************************************************************/
-/* Enables the BLE statistics measurement feature.                                                              */
-/****************************************************************************************************************/
-#undef CFG_BLE_METRICS
-
-/****************************************************************************************************************/
-/* Output the Hardfault arguments to serial/UART interface.                                                     */
-/****************************************************************************************************************/
-#undef CFG_PRODUCTION_DEBUG_OUTPUT
+#undef CFG_BLE_METRICS                 // Enables the BLE statistics measurement feature.   
+#undef CFG_PRODUCTION_DEBUG_OUTPUT     // Output the Hardfault arguments to serial/UART interface.      
 
 /****************************************************************************************************************/
 /* Maximum supported TX data packet length (supportedMaxTxOctets value, as defined in 4.2 Specification).       */
@@ -381,10 +302,7 @@
 /****************************************************************************************************************/
 #define CFG_USE_H4TL                    (0)
 
-/****************************************************************************************************************/
-/* Duplicate filter max value for the scan report list. The maximum value shall be 100.                         */
-/****************************************************************************************************************/
-#define CFG_BLE_DUPLICATE_FILTER_MAX    (10)
+#define CFG_BLE_DUPLICATE_FILTER_MAX    (10) // Duplicate filter max value for the scan report list. Max of 100.
 
 /****************************************************************************************************************/
 /* Duplicate filter flag for the scan report list. This flag controls what will be reported if the              */
@@ -393,10 +311,7 @@
 /****************************************************************************************************************/
 #undef CFG_BLE_DUPLICATE_FILTER_FOUND
 
-/****************************************************************************************************************/
-/* Resolving list maximum size.                                                                                 */
-/****************************************************************************************************************/
-#define CFG_LLM_RESOLVING_LIST_MAX      LLM_RESOLVING_LIST_MAX
+#define CFG_LLM_RESOLVING_LIST_MAX      LLM_RESOLVING_LIST_MAX  // Resolving list maximum size
 
 /****************************************************************************************************************/
 /* Enables automatic data packet length negotiation.                                                            */
@@ -410,10 +325,7 @@
 /****************************************************************************************************************/
 #define CFG_RET_DATA_SIZE    (2048)
 
-/****************************************************************************************************************/
-/* Maximum uninitialized retained data required by the application.                                             */
-/****************************************************************************************************************/
-#define CFG_RET_DATA_UNINIT_SIZE (0)
+#define CFG_RET_DATA_UNINIT_SIZE (0)      // Maximum uninitialized retained data required by the application
 
 /****************************************************************************************************************/
 /* The Keil scatter file may be provided by the user. If the user provides his own scatter file, the system has */
@@ -456,5 +368,4 @@
 #define CFG_DISABLE_QUADEC_ON_START_UP
 
 #endif
-
 #endif // _DA1458X_CONFIG_ADVANCED_H_

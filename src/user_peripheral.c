@@ -59,7 +59,7 @@ uint8_t stored_scan_rsp_data[SCAN_RSP_DATA_LEN] __SECTION_ZERO("retention_mem_ar
 * FUNCTION DEFINITIONS
 ****************************************************************************************
 */
-static uint16_t gpadc_read(void);
+// static uint16_t gpadc_read(void);
 // static uint16_t gpadc_sample_to_mv(uint16_t sample);
 // static timer_hnd timer_id __attribute__((section("retention_mem_area0"),zero_init));
 
@@ -78,7 +78,7 @@ static uint16_t gpadc_read(void) { // SINGLE ENDED MONITORING
     /* Initialize the ADC */
     adc_config_t adc_cfg = {
         .mode = ADC_INPUT_MODE_SINGLE_ENDED,
-        .input = ADC_INPUT_SE_P0_1, // Can use P0_0 to P0_3
+        .input = ADC_INPUT_SE_P0_2, // Can use P0_0 to P0_3
         .attn = true,
         .sign = false
     };
@@ -240,7 +240,9 @@ void app_adcval1_timer_cb_handler() {
     memcpy(req->value, &out, DEF_SVC1_ADC_VAL_1_CHAR_LEN);
     ke_msg_send(req);
 
-    if (ke_state_get(TASK_APP) == APP_CONNECTED) {timer_used = app_easy_timer(100, app_adcval1_timer_cb_handler);};
+    if (ke_state_get(TASK_APP) == APP_CONNECTED) {
+        timer_used = app_easy_timer(100, app_adcval1_timer_cb_handler);
+    };
 }
 
 
