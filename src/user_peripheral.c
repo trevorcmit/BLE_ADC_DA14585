@@ -74,22 +74,26 @@ void user_on_set_dev_config_complete(void) {
 }
 
 
-static uint16_t gpadc_read(void) { // SINGLE ENDED MONITORING
-    /* Initialize the ADC */
-    adc_config_t adc_cfg = {
+static uint16_t gpadc_read(void) {
+    adc_config_t adc_cfg = {                   // Initialize the ADC
         .mode = ADC_INPUT_MODE_SINGLE_ENDED,
-        .input = ADC_INPUT_SE_P0_2, // Can use P0_0 to P0_3
+        .input = ADC_INPUT_SE_P0_2,            // Can use P0_0 to P0_3
         .attn = true,
-        .sign = false
+        .sign = false,
+        // .oversampling = 0,
+        // .chopping = false,
+        // .input_attenuator = ADC_INPUT_ATTN_4X,
     };
     adc_init(&adc_cfg);
 
     /* Perform offset calibration of the ADC */
     adc_offset_calibrate(ADC_INPUT_MODE_SINGLE_ENDED);
 
-    // adc_start();
-    adc_enable();
+    // adc_enable();
+
+    adc_start();
     // uint16_t result = adc_correct_sample(adc_get_sample());
+
     uint16_t result = adc_get_sample();
     adc_disable();
 

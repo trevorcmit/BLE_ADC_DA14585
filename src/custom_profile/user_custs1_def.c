@@ -12,7 +12,6 @@
 * @{
 ****************************************************************************************
 */
-
 #include <stdint.h>
 #include "co_utils.h"
 #include "prf_types.h"
@@ -46,15 +45,13 @@ static const uint8_t SVC3_READ_VAL_3_UUID_128[ATT_UUID_128_LEN]       = DEF_SVC3
 static const uint8_t SVC3_READ_VAL_4_UUID_128[ATT_UUID_128_LEN]       = DEF_SVC3_READ_VAL_4_UUID_128;
 
 // Attribute specifications
-static const uint16_t att_decl_svc       = ATT_DECL_PRIMARY_SERVICE;
-static const uint16_t att_decl_char      = ATT_DECL_CHARACTERISTIC;
-static const uint16_t att_desc_cfg       = ATT_DESC_CLIENT_CHAR_CFG;
-static const uint16_t att_desc_user_desc = ATT_DESC_CHAR_USER_DESCRIPTION;
+static const uint16_t att_decl_svc        =  ATT_DECL_PRIMARY_SERVICE;
+static const uint16_t att_decl_char       =  ATT_DECL_CHARACTERISTIC;
+static const uint16_t att_desc_cfg        =  ATT_DESC_CLIENT_CHAR_CFG;
+static const uint16_t att_desc_user_desc  =  ATT_DESC_CHAR_USER_DESCRIPTION;
 
-/*
- * GLOBAL VARIABLE DEFINITIONS
- ****************************************************************************************
- */
+
+// GLOBAL VARIABLE DEFINITIONS
 
 const uint8_t custs1_services[]  = {SVC1_IDX_SVC, SVC2_IDX_SVC, SVC3_IDX_SVC, CUSTS1_IDX_NB};
 const uint8_t custs1_services_size = ARRAY_LEN(custs1_services) - 1;
