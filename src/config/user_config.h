@@ -36,10 +36,7 @@
  */
 #define USER_CFG_CNTL_PRIV_MODE     APP_CFG_CNTL_PRIV_MODE_NETWORK
 
-/*
-* VARIABLES
-****************************************************************************************
-*/
+// ********************* VARIABLES *********************
 /******************************************
  * Default sleep mode. Possible values are:
 * - ARCH_SLEEP_OFF

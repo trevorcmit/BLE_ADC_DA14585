@@ -20,14 +20,10 @@
 /***************************************************************************************************************/
 #define CFG_APP
 
-/****************************************************************************************************************/
-/* Enables the BLE security functionality in TASK_APP. If not defined BLE security related code is compiled out.*/
-/****************************************************************************************************************/
+// Enables the BLE security functionality in TASK_APP. If not defined BLE security related code is compiled out.
 #undef CFG_APP_SECURITY
 
-/****************************************************************************************************************/
-/* Enables WatchDog timer.                                                                                      */
-/****************************************************************************************************************/
+// Enables Watchdog timer
 #undef CFG_WDOG
 
 /****************************************************************************************************************/
@@ -77,10 +73,7 @@
 #undef CFG_I2C_EEPROM_ENABLE
 
 /****************************************************************************************************************/
-/* Enables/Disables the DMA Support for the following interfaces:                                               */
-/*     - UART                                                                                                   */
-/*     - SPI                                                                                                    */
-/*     - I2C                                                                                                    */
+/* Enables/Disables the DMA Support for the following interfaces: UART, SPI, I2C                                */
 /****************************************************************************************************************/
 #undef CFG_UART_DMA_SUPPORT
 #undef CFG_SPI_DMA_SUPPORT
@@ -141,7 +134,6 @@
 /****************************************************************************************************************/
 #undef CFG_UART1_SDK
 
-
 /****************************************************************************************************************/
 /* Select external memory device for data storage                                                               */
 /* SPI FLASH  (#define CFG_SPI_FLASH_ENABLE)                                                                    */
@@ -151,11 +143,7 @@
 #undef CFG_I2C_EEPROM_ENABLE
 
 /****************************************************************************************************************/
-/* Enables/Disables the DMA Support for the following interfaces:                                               */
-/*     - UART                                                                                                   */
-/*     - SPI                                                                                                    */
-/*     - I2C                                                                                                    */
-/*     - ADC                                                                                                    */
+/* Enables/Disables the DMA Support for the following interfaces: Uart, SPI, I2C, ADC                           */
 /****************************************************************************************************************/
 #undef CFG_UART_DMA_SUPPORT
 #undef CFG_SPI_DMA_SUPPORT

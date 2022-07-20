@@ -52,7 +52,6 @@ static const uint16_t att_desc_user_desc  =  ATT_DESC_CHAR_USER_DESCRIPTION;
 
 
 // GLOBAL VARIABLE DEFINITIONS
-
 const uint8_t custs1_services[]  = {SVC1_IDX_SVC, SVC2_IDX_SVC, SVC3_IDX_SVC, CUSTS1_IDX_NB};
 const uint8_t custs1_services_size = ARRAY_LEN(custs1_services) - 1;
 const uint16_t custs1_att_max_nb = CUSTS1_IDX_NB;

@@ -4,7 +4,6 @@
 * @brief Callback functions configuration file.
 ****************************************************************************************
 */
-
 #ifndef _USER_CALLBACK_CONFIG_H_
 #define _USER_CALLBACK_CONFIG_H_
 

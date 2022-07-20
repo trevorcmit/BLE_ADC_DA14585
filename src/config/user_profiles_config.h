@@ -22,9 +22,8 @@
 #define CFG_PRF_DISS
 #define CFG_PRF_CUST1
 
-/***************************************************************************************/
-/* Profile application configuration section                                           */
-/***************************************************************************************/
+
+// Profile application configuration section
 
 // DISS application profile configuration
 #define APP_DIS_FEATURES                (DIS_MANUFACTURER_NAME_CHAR_SUP | \

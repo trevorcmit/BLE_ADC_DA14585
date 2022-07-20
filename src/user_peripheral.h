@@ -27,10 +27,7 @@
 #include "app_default_handlers.h"
 
 
-/*
- * DEFINES
- ****************************************************************************************
- */
+// DEFINES
 
 /* Duration of timer for connection parameter update request */
 #define APP_PARAM_UPDATE_REQUEST_TO         (1000)   // 1000*10ms = 10sec, The maximum allowed value is 41943sec (4194300 * 10ms)
@@ -44,16 +41,6 @@
 #define APP_AD_MSD_DATA_LEN         (sizeof(uint16_t))
 
 #define APP_PERIPHERAL_CTRL_TIMER_DELAY 100
-
-/*
- * TYPE DEFINITIONS
- ****************************************************************************************
- */
-
-/*
- * FUNCTION DECLARATIONS
- ****************************************************************************************
- */
 
 void user_on_init(void);
 void user_on_set_dev_config_complete(void);

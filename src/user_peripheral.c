@@ -89,9 +89,9 @@ static uint16_t gpadc_read(void) {
     /* Perform offset calibration of the ADC */
     adc_offset_calibrate(ADC_INPUT_MODE_SINGLE_ENDED);
 
-    // adc_enable();
+    adc_enable();
 
-    adc_start();
+    // adc_start();
     // uint16_t result = adc_correct_sample(adc_get_sample());
 
     uint16_t result = adc_get_sample();
@@ -100,15 +100,6 @@ static uint16_t gpadc_read(void) {
     return (result);
 }
 
-// static uint16_t gpadc_sample_to_mv(uint16_t sample) {
-    /* Resolution of ADC sample depends on oversampling rate */
-    // uint32_t adc_res = 10 + ((6 < adc_get_oversampling()) ? 6 : adc_get_oversampling());
-
-    /* Reference voltage is 900mv but scale based in input attenation */
-    // uint32_t ref_mv = 900 * (GetBits16(GP_ADC_CTRL2_REG, GP_ADC_ATTN) + 1);
-
-    // return (uint16_t)((((uint32_t)sample) * ref_mv) >> adc_res);
-// }
 
 /**
  ****************************************************************************************

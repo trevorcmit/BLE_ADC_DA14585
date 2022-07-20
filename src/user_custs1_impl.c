@@ -25,10 +25,7 @@
 uint16_t indication_counter __SECTION_ZERO("retention_mem_area0"); //@RETENTION MEMORY
 uint16_t non_db_val_counter __SECTION_ZERO("retention_mem_area0"); //@RETENTION MEMORY
 
-/*
- * FUNCTION DEFINITIONS
- ****************************************************************************************
- */
+// Function Definitions
 void user_svc1_ctrl_wr_ind_handler(ke_msg_id_t const msgid,
                                    struct custs1_val_write_ind const *param,
                                    ke_task_id_t const dest_id,

@@ -40,10 +40,6 @@ void GPIO_reservations(void) {
 #endif
 
 void set_pad_functions(void) {
-    /*
-        i.e. to set P0_1 as Generic purpose Output:
-        GPIO_ConfigurePin(GPIO_PORT_0, GPIO_PIN_1, OUTPUT, PID_GPIO, false);
-    */
     #if defined (__DA14586__)
         // Disallow spontaneous DA14586 SPI Flash wake-up
         GPIO_ConfigurePin(GPIO_PORT_2, GPIO_PIN_3, OUTPUT, PID_GPIO, true);
